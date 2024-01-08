@@ -20,8 +20,12 @@ public class ProductService {
 	
 	public ProductDTO detail(ProductDTO productDTO) throws Exception{
 		
-			return productDAO.detail(productDTO);
+			return productDAO.detail(productDTO);			
 			
-			
+	}
+	
+	public int add(ProductDTO productDTO) throws Exception{
+		
+			return productDAO.add(productDTO);
 	}
 }

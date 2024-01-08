@@ -9,7 +9,9 @@
   			SELECT * FROM PRODUCT
   		</select>
   		
-  		
+  		<select id="add" parameterType="ProductDTO">
+  			INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL,#{productName},#{productContents},#{productRate},#{productJumsu})
+  		</select>
   
   
   

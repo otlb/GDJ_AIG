@@ -34,12 +34,11 @@ public class ProductDAO {
 	
 	
 	
-//	//등록
-//	public int add(ProductDTO productDTO) {
-//		
-//		
-//		return 0;
-//	}
+	//등록
+	public int add(ProductDTO productDTO) {		
+			
+		return sqlSession.insert(namespace+"add", productDTO);
+	}
 //	//디테일
 //	public ProductDTO detail(ProductDTO productDTO) throws Exception {
 //		Connection con = DBConnector.getConnector();

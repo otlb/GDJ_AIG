@@ -37,5 +37,26 @@ public class ProductController {
 //		return "product/detail";
 //		
 //	}
+	@RequestMapping(value = "add",method = RequestMethod.GET)
+	public String add() {		
+		
+		
+		return "regions/add";
+	}
+	
+	@RequestMapping(value = "add",method = RequestMethod.POST)
+	public String add(ProductDTO productDTO,Model model) throws Exception{
+		
+		int result = productService.add(productDTO);
+		String msg = "등록 실패";
+		
+		if(result>0) {
+			msg = "등록 성공";
+			
+		}
+		model.addAttribute("msg", msg);
+		model.addAttribute("path","./list");
+		return "product/add";
+	}
 
 }
