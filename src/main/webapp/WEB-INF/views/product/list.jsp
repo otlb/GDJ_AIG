@@ -26,7 +26,7 @@
 		<c:forEach items="${requestScope.list}" var="dto">
 			<tr>
 				<td>${pageScope.dto.productNum}</td>
-				<td><a>${pageScope.dto.productName}</a></td>
+				<td>${pageScope.dto.productName}</td>
 				<td>${pageScope.dto.productContents}</td>	
 				<td>${pageScope.dto.productRate}</td>	
 				<td>${pageScope.dto.productJumsu}</td>				
