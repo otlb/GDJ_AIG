@@ -21,9 +21,9 @@ public class ProductDAO {
 		
 	
 	//목록
-	public List<ProductDTO> list() throws Exception {
+	public List<ProductDTO> list(Pager pager) throws Exception {
 							
-			return sqlSession.selectList(namespace+"list");
+			return sqlSession.selectList(namespace+"list",pager);
 			
 	}
 	

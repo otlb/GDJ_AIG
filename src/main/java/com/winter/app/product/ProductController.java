@@ -18,9 +18,9 @@ public class ProductController {
 	private ProductService productService;
 	
 	@RequestMapping(value="list", method = RequestMethod.GET)
-	public String list(HttpServletRequest request) throws Exception {
+	public String list(HttpServletRequest request,Pager pager) throws Exception {
 		
-		List<ProductDTO> ar = productService.getList();
+		List<ProductDTO> ar = productService.getList(pager);
 		request.setAttribute("list",ar);
 		
 		return "product/list";

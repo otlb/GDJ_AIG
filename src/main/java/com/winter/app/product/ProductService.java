@@ -11,9 +11,9 @@ public class ProductService {
 	@Autowired
 	private ProductDAO productDAO;
 	
-	public List<ProductDTO> getList() throws Exception{
+	public List<ProductDTO> getList(Pager pager) throws Exception{
 		
-		List<ProductDTO> ar = this.productDAO.list();
+		List<ProductDTO> ar = this.productDAO.list(pager);
 		
 		return ar;
 	}
