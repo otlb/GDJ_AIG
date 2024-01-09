@@ -19,8 +19,8 @@ public class ProductDAO {
 	private SqlSession sqlSession;
 	private String namespace = "com.winter.app.product.ProductDAO.";
 	
-	public Long getTotal() throws Exception {
-		return sqlSession.selectOne(namespace+"getTotal");
+	public Long getTotal(Pager pager) throws Exception {
+		return sqlSession.selectOne(namespace+"getTotal",pager);
 		
 	}
 		

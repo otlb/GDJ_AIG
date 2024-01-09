@@ -6,9 +6,19 @@
   
   <mapper namespace="com.winter.app.product.ProductDAO">
   
-  	<sql id="search">
-  		WHERE PRODUCTNAME LIKE '%'||#{search}||'%'
-  	</sql>
+  		<sql id="search">
+			<where>
+			<if test="kind=='kind1' or kind=='kind4'">
+			PRODUCTNAME LIKE '%'||#{search}||'%'			
+			</if>
+			<if test="kind=='kind2' or kind=='kind4'">
+			OR PRODUCTCONTENTS LIKE '%'||#{search}||'%'
+			</if>
+			<if test="kind=='kind3' or kind=='kind4'">
+			OR PRODUCTNUM LIKE '%'||#{search}||'%'
+			</if>
+			</where> 			
+		</sql>
   
   
   		<select id="list" resultType="ProductDTO" parameterType="Pager">
