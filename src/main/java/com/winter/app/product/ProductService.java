@@ -12,7 +12,7 @@ public class ProductService {
 	private ProductDAO productDAO;
 	
 	public List<ProductDTO> getList(Pager pager) throws Exception{
-		
+		pager.makeRow();
 		List<ProductDTO> ar = this.productDAO.list(pager);
 		
 		return ar;
