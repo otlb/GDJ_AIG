@@ -17,6 +17,9 @@
   			INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL,#{productName},#{productContents},#{productRate},#{productJumsu})
   		</select>
   
+  		<select id="getTotal" resultType="Long">
+  			SELECT COUNT(PRODUCTNUM) FROM PRODUCT	
+  		</select>
   
   
   </mapper>

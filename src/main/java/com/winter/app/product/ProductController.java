@@ -22,6 +22,7 @@ public class ProductController {
 		
 		List<ProductDTO> ar = productService.getList(pager);
 		model.addAttribute("list",ar);
+		model.addAttribute("pager",pager);
 		
 		return "product/list";
 	}

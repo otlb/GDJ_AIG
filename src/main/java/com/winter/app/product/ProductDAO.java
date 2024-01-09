@@ -18,6 +18,11 @@ public class ProductDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	private String namespace = "com.winter.app.product.ProductDAO.";
+	
+	public Long getTotal() throws Exception {
+		return sqlSession.selectOne(namespace+"getTotal");
+		
+	}
 		
 	
 	//목록
