@@ -5,10 +5,17 @@
   
   
   <mapper namespace="com.winter.app.product.ProductDAO">
+  
+  	<sql id="search">
+  		WHERE PRODUCTNAME LIKE '%'||#{search}||'%'
+  	</sql>
+  
+  
   		<select id="list" resultType="ProductDTO" parameterType="Pager">
   			SELECT * FROM			
 			(SELECT ROWNUM P,PD.* FROM			
 			(SELECT * FROM PRODUCT
+			<include refid="search"></include>
 			ORDER BY PRODUCTNUM DESC) PD)
 			WHERE P BETWEEN #{startRow} AND #{lastRow}
   		</select>
@@ -18,7 +25,8 @@
   		</select>
   
   		<select id="getTotal" resultType="Long">
-  			SELECT COUNT(PRODUCTNUM) FROM PRODUCT	
+  			SELECT COUNT(PRODUCTNUM) FROM PRODUCT
+  			<include refid="search"></include>	
   		</select>
   		
   		<select id="detail" parameterType="ProductDTO">
