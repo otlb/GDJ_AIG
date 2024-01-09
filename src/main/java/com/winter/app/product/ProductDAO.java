@@ -31,7 +31,7 @@ public class ProductDAO {
 			return sqlSession.selectList(namespace+"list",pager);
 			
 	}
-	
+	//디테일
 	public ProductDTO detail(ProductDTO productDTO) throws Exception{
 		
 				return sqlSession.selectOne(namespace+"detail", productDTO);
@@ -44,16 +44,7 @@ public class ProductDAO {
 			
 		return sqlSession.insert(namespace+"add", productDTO);
 	}
-//	//디테일
-//	public ProductDTO detail(ProductDTO productDTO) throws Exception {
-//		Connection con = DBConnector.getConnector();
-//		String sql ="SELECT * FROM PRODUCT WHERE PRODUCTNUM=?";
-//		PreparedStatement st = con.prepareStatement(sql);
-//		st.setLong(1, productDTO.getProductNum());
-//		
-//		
-//		return null;
-//	}
+	
 //	//삭제
 //	public int remove(ProductDTO productDTO) {
 //		

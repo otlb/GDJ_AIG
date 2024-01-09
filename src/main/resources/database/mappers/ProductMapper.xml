@@ -20,6 +20,10 @@
   		<select id="getTotal" resultType="Long">
   			SELECT COUNT(PRODUCTNUM) FROM PRODUCT	
   		</select>
+  		
+  		<select id="detail" parameterType="ProductDTO">
+  			SELECT * FROM PRODUCT WHERE PRODUCTNUM = #{productNum}
+  		</select>
   
   
   </mapper>

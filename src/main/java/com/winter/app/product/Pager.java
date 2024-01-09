@@ -21,8 +21,7 @@ public class Pager {
 	}
 	public void makeNum(Long totalCount) {
 		//1.총 갯수로 총 페이지 수 구하기		
-		Long totalPage = 0L;
-		totalPage = totalCount/this.getPerPage();
+		Long totalPage = totalCount/this.getPerPage();		 
 		if(totalCount%this.getPerPage()!=0) {
 			totalPage++;
 		}		
@@ -30,22 +29,19 @@ public class Pager {
 		
 		//2.총페이지수로 총 블럭수 구하기
 		Long perBlock = 5L;
-		Long totalBlock = 0L;
-		totalBlock = totalPage/perBlock;
+		Long totalBlock = totalPage/perBlock;		 
 		if(totalPage%perBlock !=0) {
 			totalBlock++;
 		}		
 		//3.현재페이지 번호로 현재블럭번호구하기
-		Long curBlock=0L;
-		
-		curBlock = this.getPage()/perBlock;
+		Long curBlock=this.getPage()/perBlock;		 
 		if(this.getPage()%perBlock != 0) {
 			curBlock++;
 		}		
 		//4.현재블럭번호로 시작번호와 끝번호구하기
-		Long startNum = 0L;
+		
 		Long lastNum = curBlock*perBlock;
-		startNum = lastNum-perBlock+1;
+		Long startNum = lastNum-perBlock+1;
 		
 		this.setLastNum(lastNum);
 		this.setStartNum(startNum);		
@@ -56,7 +52,7 @@ public class Pager {
 			this.setStart(true);
 		}
 		if(curBlock==totalBlock) {
-			this.setLast(last);
+			this.setLast(true);
 			this.setLastNum(totalPage);
 		}
 		
