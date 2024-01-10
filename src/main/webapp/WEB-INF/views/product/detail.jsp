@@ -13,12 +13,36 @@
 <section class="container-fluid">
 <h1>Product Detail</h1>
 
-<table>
-	
-
-
-</table>
-</section>
+    <section class="container-fluid">    	
+    	
+    	<c:if test="${dto != null }">
+    	<table class="table table-hover">
+    		<thead>
+    			<tr>
+    				<th>NUM</th>
+    				<th>NAME</th>
+    				<th>CONTENTS</th>
+    				<th>RATE</th>
+    				<th>JUMSU</th>
+    			</tr>
+    		</thead>
+    		<tr>
+    			<td>${dto.productNum}</td>    			
+    			<td>${dto.productName}</td>
+    			<td>${dto.productContents}</td>
+    			<td>${dto.productRate}</td>
+    			<td>${dto.productJumsu}</td>
+    		</tr>
+    	</table>
+    	</c:if>
+    	
+    	<c:if test="${empty dto}">
+    			<h3>없는 번호 입니다.</h3>
+    		</c:if>
+    		
+    	    
+			
+    </section>
 
 
 

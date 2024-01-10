@@ -13,25 +13,25 @@ public class Pager {
 	private boolean start;
 	private boolean last;
 	
-	private String scarch;
+	private String search;
 	private String kind;
 	
+	public String getSearch() {
+		return search;
+	}
+	public void setSearch(String search) {
+		if(this.search == null) {
+			this.search = "";
+		}
+		this.search = search;
+	}
 	public String getKind() {
 		return kind;
 	}
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
-	public String getScarch() {
-		return scarch;
-	}
-	public void setScarch(String scarch) {
-		if(this.scarch == null) {
-			this.scarch="";
-		}
-		
-		this.scarch = scarch;
-	}
+	
 	//startRow,lastRow 계산하는 메서드
 	public void makeRow() {
 		this.startRow=(this.getPage()-1)*this.getPerPage()+1;

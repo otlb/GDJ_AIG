@@ -39,7 +39,7 @@
   			<include refid="search"></include>	
   		</select>
   		
-  		<select id="detail" parameterType="ProductDTO">
+  		<select id="detail" resultType="ProductDTO" parameterType="ProductDTO">
   			SELECT * FROM PRODUCT WHERE PRODUCTNUM = #{productNum}
   		</select>
   

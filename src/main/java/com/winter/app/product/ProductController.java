@@ -28,21 +28,21 @@ public class ProductController {
 	}
 	
 	
-//	@RequestMapping(value="detail", method = RequestMethod.GET)
-//	public String detail(ProductDTO productDTO,Model model) throws Exception {
-//		
-//		productDTO = productService.detail(productDTO);
-//		
-//		model.addAttribute("dto", productDTO);
-//		
-//		return "product/detail";
-//		
-//	}
+	@RequestMapping(value="detail", method = RequestMethod.GET)
+	public String detail(ProductDTO productDTO,Model model) throws Exception {
+		
+		productDTO = productService.detail(productDTO);
+		
+		model.addAttribute("dto", productDTO);
+		
+		return "product/detail";
+		
+	}
+	
 	@RequestMapping(value = "add",method = RequestMethod.GET)
-	public String add() {		
+	public String add() {			
 		
-		
-		return "regions/add";
+		return "product/add";
 	}
 	
 	@RequestMapping(value = "add",method = RequestMethod.POST)
@@ -57,7 +57,7 @@ public class ProductController {
 		}
 		model.addAttribute("msg", msg);
 		model.addAttribute("path","./list");
-		return "product/add";
+		return "commons/result";
 	}
 
 }
