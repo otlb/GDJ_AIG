@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 
 
+
 @Repository
 public class ProductDAO {
 	
@@ -44,21 +45,21 @@ public class ProductDAO {
 			
 		return sqlSession.insert(namespace+"add", productDTO);
 	}
+	public int addFile(ProductFileDTO productFileDTO) throws Exception{
+		return sqlSession.insert(namespace+"addFile", productFileDTO);
+	}
 	
-//	//삭제
-//	public int remove(ProductDTO productDTO) {
-//		
-//		
-//		return 0;
-//	}
-//	
-//	//수정
-//	public int revies(ProductDTO productDTO) {
-//		
-//		
-//		return 0;
-//	}
 	
+	//수정(UPDATE)	
+	public int update(ProductDTO productDTO) throws Exception  {
+		
+		return sqlSession.update(namespace+"update",productDTO);
+	}
+	
+	//삭제(delete)
+	public int delete(ProductDTO productDTO) throws Exception{
+		return sqlSession.delete(namespace+"delete", productDTO);	
+	}
 
 }
 

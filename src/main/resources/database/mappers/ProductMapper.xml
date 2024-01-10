@@ -30,9 +30,21 @@
 			WHERE P BETWEEN #{startRow} AND #{lastRow}
   		</select>
   		
-  		<select id="add" parameterType="ProductDTO">
-  			INSERT INTO PRODUCT VALUES(PRODUCT_SEQ.NEXTVAL,#{productName},#{productContents},#{productRate},#{productJumsu})
-  		</select>
+  		
+  		<insert id="addFile" parameterType="ProductFileDTO">
+  			INSERT INTO PRODUCTFILES
+  			VALUES(FILE_SEQ.NEXTVAL,#{productNum},#{fileName},#{oriName})
+  		</insert>
+  		
+  		<insert id="add" parameterType="ProductDTO">
+  			<selectKey keyProperty="productNum" order="BEFORE" resultType="Long">
+  				SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
+  			</selectKey>
+  			INSERT INTO PRODUCT VALUES(#{productNum},#{productName},#{productContents},#{productRate},#{productJumsu})
+  		</insert>
+  		
+  		
+  		
   
   		<select id="getTotal" resultType="Long">
   			SELECT COUNT(PRODUCTNUM) FROM PRODUCT
@@ -42,6 +54,19 @@
   		<select id="detail" resultType="ProductDTO" parameterType="ProductDTO">
   			SELECT * FROM PRODUCT WHERE PRODUCTNUM = #{productNum}
   		</select>
+  		
+  		<!-- update -->
+		<update id="update" parameterType="ProductDTO" >
+			UPDATE PRODUCT SET PRODUCTNAME=#{productName} WHERE PRODUCTNUM=#{productNum}
+		</update>
+		
+		<!-- delete -->
+		<delete id="delete" parameterType="ProductDTO"> 
+			DELETE PRODUCT WHERE PRODUCTNUM = #{productNum}
+		</delete>
+  		
+  		
+  		
   
   
   </mapper>
