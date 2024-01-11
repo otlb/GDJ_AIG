@@ -24,6 +24,10 @@ public class ProductDAO {
 		return sqlSession.selectOne(namespace+"getTotal",pager);
 		
 	}
+	
+	public List<ProductFileDTO> getListFiles(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectList(namespace+"getListFiles", productDTO);
+	}
 		
 	
 	//목록
@@ -45,6 +49,7 @@ public class ProductDAO {
 			
 		return sqlSession.insert(namespace+"add", productDTO);
 	}
+	
 	public int addFile(ProductFileDTO productFileDTO) throws Exception{
 		return sqlSession.insert(namespace+"addFile", productFileDTO);
 	}

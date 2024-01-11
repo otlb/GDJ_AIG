@@ -52,6 +52,7 @@ public class ProductService {
 		
 		//어디에 저장할것인가 ?
 		String path = servletContext.getRealPath("/resources/upload/product");
+		System.out.println(path);
 		
 		for(MultipartFile f:file) {
 			
@@ -84,8 +85,18 @@ public class ProductService {
 	
 	//delete
 	public int delete(ProductDTO productDTO) throws Exception{
+		//조회
+		List<ProductFileDTO> ar = productDAO.getListFiles(productDTO);
+		//db삭제
+		int result = productDAO.delete(productDTO);
+		//hdd삭제 
+		String path = servletContext.getRealPath("/resources/upload/product/");
 		
-		return productDAO.delete(productDTO);
+		for(ProductFileDTO f:ar) {
+			fileManager.fileDelete(path, f.getFileName());			
+		}		
+		
+		return result;
 		
 	}
 	

@@ -82,6 +82,12 @@
 			UPDATE PRODUCT SET PRODUCTNAME=#{productName} WHERE PRODUCTNUM=#{productNum}
 		</update>
 		
+		<!-- file 조회 -->
+		<select id="getListFiles" resultType="ProductFileDTO" parameterType="ProductDTO">
+			SELECT * FROM PRODUCTFILES
+			WHERE PRODUCTNUM = #{productNum}			
+		</select>
+		
 		<!-- delete -->
 		<delete id="delete" parameterType="ProductDTO"> 
 			DELETE PRODUCT WHERE PRODUCTNUM = #{productNum}
