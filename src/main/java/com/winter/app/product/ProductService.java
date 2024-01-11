@@ -42,7 +42,7 @@ public class ProductService {
 	
 	
 	
-	public int add(ProductDTO productDTO,MultipartFile file) throws Exception{
+	public int add(ProductDTO productDTO,MultipartFile  file) throws Exception{
 		
 		int result = productDAO.add(productDTO);
 		
@@ -53,6 +53,8 @@ public class ProductService {
 		if(!f.exists()) {
 			f.mkdirs();
 		}
+		
+		
 		//파일명 정하기 
 		String fileName = UUID.randomUUID().toString()+"_"+file.getOriginalFilename();
 				

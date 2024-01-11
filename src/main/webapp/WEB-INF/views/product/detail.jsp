@@ -40,9 +40,11 @@
     			<h3>없는 번호 입니다.</h3>
     		</c:if>
     		
-    		<button id="up" data-product-Num="${dto.productNum}">UPDATE</button>
     		
     		<form action="./delete" id="frm" method="post">
+    		
+	    		<button id="up" data-product-Num="${dto.productNum}">UPDATE</button>
+    		
     			<button type="" id="del">DELETE</button>    		
     			<input type="hidden" name="productNum" value="${dto.productNum}">
     		</form>
