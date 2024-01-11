@@ -51,9 +51,31 @@
   			<include refid="search"></include>	
   		</select>
   		
-  		<select id="detail" resultType="ProductDTO" parameterType="ProductDTO">
-  			SELECT * FROM PRODUCT WHERE PRODUCTNUM = #{productNum}
+  		
+  		
+  		<select id="detail" resultMap="detailResult" parameterType="ProductDTO">
+			SELECT *
+			 		FROM PRODUCT P
+					LEFT OUTER JOIN
+					PRODUCTFILES PF USING(PRODUCTNUM)
+			WHERE PRODUCTNUM = #{productNum}
   		</select>
+  		<resultMap type="ProductDTO" id="detailResult">
+  			<id column="PRODUCTNUM" property="productNum"/>
+  			<result column="PRODUCTNAME" property="productName"/>
+  			<result column="PRODUCTCONTENTS" property="productContents"/>
+  			<result column="PRODUCTRATE" property="productRate"/>
+  			<result column="PRODUCTJUMSU" property="productJumsu"/>
+  				<collection property="productFileDTOs" javaType="List" ofType="ProductFileDTO">
+  					<id column="FILENUM" property="fileNum"/>
+					<result column="FILENAME" property="fileName"/>
+					<result column="ORINAME" property="oriName"/>
+  				</collection>
+  		
+  		</resultMap>
+  		
+  		
+  		
   		
   		<!-- update -->
 		<update id="update" parameterType="ProductDTO" >

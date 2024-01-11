@@ -24,6 +24,7 @@
     				<th>CONTENTS</th>
     				<th>RATE</th>
     				<th>JUMSU</th>
+    				<th>FILE</th>
     			</tr>
     		</thead>
     		<tr>
@@ -32,6 +33,9 @@
     			<td>${dto.productContents}</td>
     			<td>${dto.productRate}</td>
     			<td>${dto.productJumsu}</td>
+    			<c:forEach items="${dto.productFileDTOs}" var="f">
+    			<td><a href="/resources/upload/product/${f.fileName}">${f.oriName}</a></td>
+    			</c:forEach>
     		</tr>
     	</table>
     	</c:if>

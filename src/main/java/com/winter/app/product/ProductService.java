@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.winter.app.util.FileManager;
+
 
 
 @Service
@@ -20,6 +22,8 @@ public class ProductService {
 	private ProductDAO productDAO;
 	@Autowired
 	private ServletContext servletContext;
+	@Autowired
+	private FileManager fileManager;
 	
 	public List<ProductDTO> getList(Pager pager) throws Exception{
 		pager.makeRow();
@@ -42,34 +46,30 @@ public class ProductService {
 	
 	
 	
-	public int add(ProductDTO productDTO,MultipartFile  file) throws Exception{
+	public int add(ProductDTO productDTO,MultipartFile [] file) throws Exception{
 		
 		int result = productDAO.add(productDTO);
 		
 		//어디에 저장할것인가 ?
-		String path = servletContext.getRealPath("/resources/upload");
-		System.out.println(path);
-		File f = new File(path, "product");
-		if(!f.exists()) {
-			f.mkdirs();
-		}
+		String path = servletContext.getRealPath("/resources/upload/product");
 		
+		for(MultipartFile f:file) {
+			
+			if(f.isEmpty()) {
+				continue;
+			}
 		
-		//파일명 정하기 
-		String fileName = UUID.randomUUID().toString()+"_"+file.getOriginalFilename();
+		String fileName = fileManager.fileSave(path,f);		
 				
-		//파일저장
-		f =new File(f,fileName);
-		FileCopyUtils.copy(file.getBytes(), f);
 		
 		//db에 저장
 		ProductFileDTO dto = new ProductFileDTO();
 		dto.setFileName(fileName);
-		dto.setOriName(file.getOriginalFilename());
+		dto.setOriName(f.getOriginalFilename());
 		dto.setProductNum(productDTO.getProductNum());
 		productDAO.addFile(dto);
 		
-		
+		}
 		return result;
 	}
 	
