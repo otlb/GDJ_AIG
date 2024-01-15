@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.winter.app.board.qna.QnaDAO">
+	<select id="getList" resultType="QnaDTO" parameterType="Pager">
+		SELECT * FROM
+		(SELECT ROWNUM R,N.* FROM
+			(
+			SELECT * FROM QNA
+			
+			ORDER BY BOARDNUM DESC
+			)N
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow} 
+	</select>
+	
+	<resultMap type="QnaDTO" id="getDetailResult">
+		<id column="BOARDNUM" property="boardNum"></id>
+		<result column="BOARDNAME" property="boardName"/>
+		<result column="BOARDCONTENTS" property="boardContents"/>
+		<result column="BOARDUSER" property="boardUser"/>
+		<result column="BOARDDATE" property="boardDate"/>
+		<result column="BOARDHITS" property="boardHits"/>
+		<result column="BOARDHITS" property="boardHits"/>
+		<result column="BOARDREF" property="boardRef"/>
+		<result column="BOARDSTEP" property="boardStep"/>
+		<result column="BOARDDEPTH" property="boardDepth"/>	
+		<collection property="boardDTOs" javaType="List" ofType="BoardFileDTO">
+			<id property="fileNum" column="FILENUM"></id>
+			<result property="fileName" column="FILENAME"/>
+			<result property="oriName" column="ORINAME"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getDetail" parameterType="QnaDTO" resultMap="getDetailResult">
+		SELECT *
+			 		FROM QNA P
+					LEFT OUTER JOIN
+					QNAFILES PF USING(BOARDNUM)
+			WHERE BOARDNUM = #{boardNum}		
+	</select>
+	
+  	<insert id="setAdd" parameterType="BoardDTO">
+  		<selectKey keyProperty="boardNum" resultType="Long" order="BEFORE">
+  			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+  		INSERT INTO QNA
+  		(BOARDNUM, BOARDNAME, BOARDUSER, BOARDCONTENTS, BOARDDATE, BOARDHITS,
+  		 BOARDREF, BOARDSTEP, BOARDDEPTH
+  		)
+  		VALUES
+  		(#{boardNum}, #{boardName}, #{boardUser},#{boardContents}, SYSDATE, 0,#{boardNum},0,0)
+  	</insert>
+	
+
+</mapper>

@@ -64,11 +64,11 @@
                                     <!-- Files-->
                                     <div class="mb-3">
                                         <label for="rate">Product File</label>
-                                        <input class="form-control" type="file" name="attach"/>
-                                        <input class="form-control" type="file" name="attach"/>
-                                        <input class="form-control" type="file" name="attach"/>
-                                        <input class="form-control" type="file" name="attach"/>
-                                        <input class="form-control" type="file" name="attach"/>
+                                        <input class="form-control" type="file" name="photo"/>
+                                        <input class="form-control" type="file" name="photo"/>
+                                        <input class="form-control" type="file" name="photo"/>
+                                        <input class="form-control" type="file" name="photo"/>
+                                        <input class="form-control" type="file" name="photo"/>
                                         
                                     </div>                                     
                                    

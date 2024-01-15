@@ -62,7 +62,8 @@
   			<selectKey keyProperty="productNum" order="BEFORE" resultType="Long">
   				SELECT PRODUCT_SEQ.NEXTVAL FROM DUAL
   			</selectKey>
-  			INSERT INTO PRODUCT VALUES(#{productNum},#{productName},#{productContents},#{productRate},#{productJumsu},#{productCount},#{productSale})
+  			INSERT INTO PRODUCT (PRODUCTNUM,PRODUCTNAME,PRODUCTCONTENTS,PRODUCTRATE)
+  			VALUES(#{productNum},#{productName},#{productContents},#{productRate})
   		</insert>
   		
   		<insert id="addFile" parameterType="ProductFileDTO">

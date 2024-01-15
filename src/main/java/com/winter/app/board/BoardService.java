@@ -2,12 +2,14 @@ package com.winter.app.board;
 
 import java.util.List;
 
+import com.winter.app.util.Pager;
+
 public interface BoardService {
 	
 	
 	
 	//목록 가지고오기
-	public List<BoardDTO> getList() throws Exception;
+	public List<BoardDTO> getList(Pager pager) throws Exception;
 	
 	//detail
 	public BoardDTO getDetail(BoardDTO boardDTO) throws Exception;

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.winter.app.board.notice.NoticeDAO">
+	<select id="getList" resultType="NoticeDTO" parameterType="Pager">
+		SELECT * FROM
+		(SELECT ROWNUM R,N.* FROM
+			(
+			SELECT * FROM BOARD
+			
+			ORDER BY BOARDNUM DESC
+			)N
+		)
+		WHERE R BETWEEN #{startRow} AND #{lastRow} 
+	</select>
+	
+	<resultMap type="NoticeDTO" id="getDetailResult">
+		<id column="BOARDNUM" property="boardNum"></id>
+		<result column="BOARDNAME" property="boardName"/>
+		<result column="BOARDCONTENTS" property="boardContents"/>
+		<result column="BOARDUSER" property="boardUser"/>
+		<result column="BOARDDATE" property="boardDate"/>
+		<result column="BOARDHITS" property="boardHits"/>	
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
+			<id property="fileNum" column="FILENUM"></id>
+			<result property="fileName" column="FILENAME"/>
+			<result property="oriName" column="ORINAME"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getDetail" parameterType="NoticeDTO" resultMap="getDetailResult">
+		SELECT *
+			 		FROM BOARD P
+					LEFT OUTER JOIN
+					QNAFILES PF USING(BOARDNUM)
+			WHERE BOARDNUM = #{boardNum}		
+	</select>
+	
+	<insert id="setAdd" parameterType="BoardDTO">
+		INSERT INTO BOARD (BOARDNUM,BOARDNAME,BOARDCONTENTS,BOARDUSER)
+		VALUES (BOARD_SEQ.NEXTVAL,#{boardName},#{boardContents},#{boardUser})
+		
+	</insert>
+	
+
+
+</mapper>
