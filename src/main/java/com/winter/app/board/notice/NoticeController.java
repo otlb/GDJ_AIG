@@ -63,10 +63,11 @@ public class NoticeController {
 		int result = boardService.setAdd(boardDTO,attachs);
 		return "redirect:./list";
 	}
-	
-	public String delete(NoticeDTO noticeDTO)throws Exception{
+	@PostMapping("delete")
+	public String setDelete(NoticeDTO noticeDTO)throws Exception{
+		int result = boardService.setDelete(noticeDTO);
 		
-		return "";
+		return "redirect:./list";
 	}
 	
 
