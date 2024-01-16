@@ -34,14 +34,24 @@
 		SELECT *
 			 		FROM BOARD P
 					LEFT OUTER JOIN
-					QNAFILES PF USING(BOARDNUM)
+					BOARDFILES PF USING(BOARDNUM)
 			WHERE BOARDNUM = #{boardNum}		
 	</select>
 	
 	<insert id="setAdd" parameterType="BoardDTO">
+		<selectKey keyProperty="boardNum" resultType="Long" order="BEFORE">
+  			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>		
 		INSERT INTO BOARD (BOARDNUM,BOARDNAME,BOARDCONTENTS,BOARDUSER)
-		VALUES (BOARD_SEQ.NEXTVAL,#{boardName},#{boardContents},#{boardUser})
+		VALUES (#{boardNum},#{boardName},#{boardContents},#{boardUser})
 		
+	</insert>
+	
+	
+	<!-- fileAdd  -->
+	<insert id="setFileAdd" parameterType="BoardFileDTO">
+		INSERT INTO BOARDFILES (FILENUM,BOARDNUM,FILENAME,ORINAME)
+		VALUES (BOARD_SEQ.NEXTVAL,#{boardNum},#{fileName},#{oriName})	
 	</insert>
 	
 

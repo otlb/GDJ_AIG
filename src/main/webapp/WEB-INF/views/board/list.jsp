@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Board List</title>
+        <title>${board} List</title>
         <!-- Favicon-->
         <!-- 사용전 경로를 꼭 수정하세요-->
 		<c:import url="../temps/head_css.jsp"></c:import>
@@ -21,7 +21,7 @@
 				
 				<div class="container px-5 my-5">
 				    <div class="text-center mb-5">
-                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">List</span></h1>
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">${board} List</span></h1>
                 </div>
 				<section class="py-5">
                     <div class="text-center mb-5">
@@ -45,7 +45,13 @@
                                 	<c:forEach items="${list}" var="dto">
                                     <tr>
                                         <td>${dto.boardNum}</td>
-                                        <td><a href="./detail?boardNum=${dto.boardNum}">${dto.boardName}</a></td>
+                                        <td><a href="./detail?boardNum=${dto.boardNum}">
+                                        	<c:catch>
+                                            <c:forEach begin="1" end="${dto.boardDepth}">--</c:forEach>
+                                            </c:catch>
+                                            ${dto.boardName}
+                                            </a>
+                                        </td>
                                         <td>${dto.boardContents}</td>
                                         <td>${dto.boardUser}</td>
                                         <td>${dto.boardDate}</td>

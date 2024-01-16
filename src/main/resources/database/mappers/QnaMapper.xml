@@ -10,10 +10,18 @@
 			(
 			SELECT * FROM QNA
 			
-			ORDER BY BOARDNUM DESC
+			ORDER BY BOARDREF DESC, BOARDSTEP ASC
 			)N
 		)
 		WHERE R BETWEEN #{startRow} AND #{lastRow} 
+	</select>
+	
+	<select id="getDetail" parameterType="QnaDTO" resultMap="getDetailResult">
+		SELECT *
+			 		FROM QNA P
+					LEFT OUTER JOIN
+					QNAFILES PF USING(BOARDNUM)
+			WHERE BOARDNUM = #{boardNum}		
 	</select>
 	
 	<resultMap type="QnaDTO" id="getDetailResult">
@@ -27,20 +35,13 @@
 		<result column="BOARDREF" property="boardRef"/>
 		<result column="BOARDSTEP" property="boardStep"/>
 		<result column="BOARDDEPTH" property="boardDepth"/>	
-		<collection property="boardDTOs" javaType="List" ofType="BoardFileDTO">
+		<collection property="boardFileDTOs" javaType="List" ofType="BoardFileDTO">
 			<id property="fileNum" column="FILENUM"></id>
 			<result property="fileName" column="FILENAME"/>
 			<result property="oriName" column="ORINAME"/>
 		</collection>
 	</resultMap>
 	
-	<select id="getDetail" parameterType="QnaDTO" resultMap="getDetailResult">
-		SELECT *
-			 		FROM QNA P
-					LEFT OUTER JOIN
-					QNAFILES PF USING(BOARDNUM)
-			WHERE BOARDNUM = #{boardNum}		
-	</select>
 	
   	<insert id="setAdd" parameterType="BoardDTO">
   		<selectKey keyProperty="boardNum" resultType="Long" order="BEFORE">
@@ -53,6 +54,36 @@
   		VALUES
   		(#{boardNum}, #{boardName}, #{boardUser},#{boardContents}, SYSDATE, 0,#{boardNum},0,0)
   	</insert>
+	
+	<!-- reply step update -->
+	<update id="setReplyUpdate" parameterType="QnaDTO">
+		UPDATE QNA SET BOARDSTEP = BOARDSTEP+1
+		WHERE BOARDREF= #{boardRef} AND BOARDSTEP > #{boardStep}	
+	</update>
+	
+	<!--  reply add -->
+	<insert id="setReplyAdd" parameterType="QnaDTO">
+		<selectKey keyProperty="boardNum" resultType="Long" order="BEFORE">
+			SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO QNA
+  		(BOARDNUM, BOARDNAME, BOARDUSER, BOARDCONTENTS, BOARDDATE, BOARDHITS,
+  		 BOARDREF, BOARDSTEP, BOARDDEPTH
+  		)
+  		VALUES
+  		(#{boardNum}, #{boardName}, #{boardUser},#{boardContents}, SYSDATE, 0,#{boardRef},#{boardStep},#{boardDepth})
+	</insert>
+	
+	<insert id="setFileAdd" parameterType="BoardFileDTO">
+		INSERT INTO QNAFILES (FILENUM,BOARDNUM,FILENAME,ORINAME)
+		VALUES (FILE_SEQ.NEXTVAL,#{boardNum},#{fileName},#{oriName})	
+	</insert>
+	
+	
+	
+	
+	
+	
 	
 
 </mapper>

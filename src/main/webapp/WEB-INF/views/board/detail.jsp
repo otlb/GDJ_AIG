@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Board Detail</title>
+        <title>${board} Detail</title>
         <!-- Favicon-->
         <!-- 사용전 경로를 꼭 수정하세요-->
 		<c:import url="../temps/head_css.jsp"></c:import>
@@ -20,14 +20,10 @@
 				<c:import url="../temps/header.jsp"></c:import>
 				<div class="container px-5 my-5">
 				    <div class="text-center mb-5">
-                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Board Detail</span></h1>
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">${board} Detail</span></h1>
                 </div>
-				</div>
+				</div>				
 				
-				<div class="container px-5 my-5">
-				    <div class="text-center mb-5">
-                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">DETAIL</span></h1>
-                </div>
 				<section class="py-5">
                     <div class="text-center mb-5">
                         <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Projects</span></h1>
@@ -43,14 +39,28 @@
                                        		<div>
                                        			${boardDTO.boardContents}
                                        		</div>
+                                            <div>
+                                                <c:forEach items="${boardDTO.boardFileDTOs}" var="f">
+                                                    <a href="../resources/upload/${board}/${f.fileName}">${f.oriName}</a>
+                                                </c:forEach>
+
+                                            </div>
                                         </div>                                        
                                     </div>
                                 </div>
                             </div>
-                            
-
                         </div>
+                    <c:if test="${bbs eq 1}">
                     </div>
+                        <a href="./reply?boardNum=${boardDTO.boardNum}" class="btn btn-light" >답글</a>
+                    <div>
+                    </c:if>   
+                    
+                   
+                    
+                    </div>
+
+
                 </section>
 	  	
     	

@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>${board} Add</title>
+        <title>BOARD REPLY</title>
         <!-- Favicon-->
         <!-- 사용전 경로를 꼭 수정하세요-->
 		<c:import url="../temps/head_css.jsp"></c:import>
@@ -21,11 +21,12 @@
 				              
 				<section class="py-5">
                     <div class="text-center mb-5">
-                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">${board} ADD</span></h1>
+                        <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">Board REPLY</span></h1>
                     </div>
                     <div class="row gx-5 justify-content-center">
                         <div class="col-lg-11 col-xl-9 col-xxl-8">
-                            <form class="form-control" action="./add" method="POST" enctype="multipart/form-data">
+                            <form class="form-control" action="./reply" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" value="${boardDTO.boardNum}" name="boardNum">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
                                 <input type="text" class="form-control" id="title" name="boardName" >
@@ -33,19 +34,11 @@
                             <div class="mb-3">
                                 <label for="user" class="form-label">Writer</label>
                                 <input type="text" class="form-control" id="user" name="boardUser" >
-                            </div>          
-
-
-                              <div class="mb-3">
+                            </div> 
+                            <div class="mb-3">
                                 <label for="contents" class="form-label">Contents</label>
                                 <textarea class="form-control" id="contents" rows="3" name="boardContents"></textarea>
-                              </div>
-                              <div class="mb-3">
-                                <input type="file" name="attachs" class="form-control">
-                                <input type="file" name="attachs" class="form-control">
-                                <input type="file" name="attachs" class="form-control">
-                              </div>
-
+                            </div>
                               <div class="d-grid"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Submit</button></div>
                            </form>
                         </div>
