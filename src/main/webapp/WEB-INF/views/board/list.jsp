@@ -42,7 +42,22 @@
                                 	</tr>
                             	</thead>
                                 <tbody>
-                                	<c:forEach items="${list}" var="dto">
+                                	<c:forEach items="${list}" var="dto">                                    
+                                    	<c:set var="f" value="0"></c:set>
+                                    	
+                                    	<c:catch>
+                                    	<c:set var="f" value="${dto.flag}"></c:set>
+                                    	<c:if test="${f eq 1}">
+                                    	<tr>
+                                            <td></td>
+                                            <td>삭제된 게시판입니다</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                    	</tr>
+                                    	</c:if>                                    	
+                                    	</c:catch>
+                                    <c:if test="${f eq 0}">
                                     <tr>
                                         <td>${dto.boardNum}</td>
                                         <td><a href="./detail?boardNum=${dto.boardNum}">
@@ -57,6 +72,8 @@
                                         <td>${dto.boardDate}</td>
                                         <td>${dto.boardHits}</td>
                                     </tr>
+                                    </c:if>
+                                    
                                     </c:forEach>
                                 </tbody>
                             

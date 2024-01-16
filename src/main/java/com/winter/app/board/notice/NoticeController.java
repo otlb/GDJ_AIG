@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.board.BoardDTO;
+import com.winter.app.board.BoardFileDTO;
 import com.winter.app.board.BoardService;
 import com.winter.app.util.Pager;
 
@@ -63,6 +64,10 @@ public class NoticeController {
 		return "redirect:./list";
 	}
 	
+	public String delete(NoticeDTO noticeDTO)throws Exception{
+		
+		return "";
+	}
 	
 
 	

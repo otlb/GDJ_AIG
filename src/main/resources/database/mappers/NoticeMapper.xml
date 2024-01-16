@@ -54,6 +54,17 @@
 		VALUES (BOARD_SEQ.NEXTVAL,#{boardNum},#{fileName},#{oriName})	
 	</insert>
 	
+	
+	<!-- file list -->
+	<select id="getFileList" parameterType="BoardDTO" resultType="BoardFileDTO">
+		SELECT FILENAME FROM BOARDFILES WHERE BOARDNUM = #{boardNum}
+	</select>	
+
+	<!-- file delete  -->
+	<delete id="setFileDelete" parameterType="BoardDTO">
+		DELETE BOARDFILES WHERE BOARDNUM = #{boardNum}
+	</delete>
+	
 
 
 </mapper>

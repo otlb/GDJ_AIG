@@ -13,6 +13,7 @@ import com.winter.app.board.BoardDAO;
 import com.winter.app.board.BoardDTO;
 import com.winter.app.board.BoardFileDTO;
 import com.winter.app.board.BoardService;
+import com.winter.app.product.ProductFileDTO;
 import com.winter.app.util.FileManager;
 import com.winter.app.util.Pager;
 
@@ -79,8 +80,18 @@ public class NoticeService implements BoardService {
 
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		//조회
+		List<ProductFileDTO> ar = boardDTO.ge
+		//db삭제
+		int result = boardDAO.setDelete(boardDTO);
+		//hdd삭제 
+		String path = servletContext.getRealPath("/resources/upload/product/");
+		
+		for(ProductFileDTO f:ar) {
+			fileManager.fileDelete(path, f.getFileName());			
+		}		
+		
+		return result;
 	}
 
 }

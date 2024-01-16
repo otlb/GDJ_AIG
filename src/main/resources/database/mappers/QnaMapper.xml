@@ -49,10 +49,10 @@
   		</selectKey>
   		INSERT INTO QNA
   		(BOARDNUM, BOARDNAME, BOARDUSER, BOARDCONTENTS, BOARDDATE, BOARDHITS,
-  		 BOARDREF, BOARDSTEP, BOARDDEPTH
+  		 BOARDREF, BOARDSTEP, BOARDDEPTH,FLAG
   		)
   		VALUES
-  		(#{boardNum}, #{boardName}, #{boardUser},#{boardContents}, SYSDATE, 0,#{boardNum},0,0)
+  		(#{boardNum}, #{boardName}, #{boardUser},#{boardContents}, SYSDATE, 0,#{boardNum},0,0,0)
   	</insert>
 	
 	<!-- reply step update -->
@@ -68,10 +68,10 @@
 		</selectKey>
 		INSERT INTO QNA
   		(BOARDNUM, BOARDNAME, BOARDUSER, BOARDCONTENTS, BOARDDATE, BOARDHITS,
-  		 BOARDREF, BOARDSTEP, BOARDDEPTH
+  		 BOARDREF, BOARDSTEP, BOARDDEPTH, FLAG
   		)
   		VALUES
-  		(#{boardNum}, #{boardName}, #{boardUser},#{boardContents}, SYSDATE, 0,#{boardRef},#{boardStep},#{boardDepth})
+  		(#{boardNum}, #{boardName}, #{boardUser},#{boardContents}, SYSDATE, 0,#{boardRef},#{boardStep},#{boardDepth},0)
 	</insert>
 	
 	<insert id="setFileAdd" parameterType="BoardFileDTO">
@@ -79,7 +79,21 @@
 		VALUES (FILE_SEQ.NEXTVAL,#{boardNum},#{fileName},#{oriName})	
 	</insert>
 	
+	<!-- file list -->
+	<select id="getFileList" parameterType="BoardDTO" resultType="BoardFileDTO">
+		SELECT FILENAME FROM QNAFILES WHERE BOARDNUM = #{boardNum}
+	</select>	
+
+	<!-- file delete  -->
+	<delete id="setFileDelete" parameterType="BoardDTO">
+		DELETE QNAFILES WHERE BOARDNUM = #{boardNum}
+	</delete>
 	
+	<!--  -->
+	<update id="setDelete" parameterType="QnaDTO">
+		UPDATE QNA SET FLAG = #{flag} 
+		WHERE BOARDNUM = #{boardNum}
+	</update>
 	
 	
 	
