@@ -81,13 +81,13 @@ public class NoticeService implements BoardService {
 	@Override
 	public int setDelete(BoardDTO boardDTO) throws Exception {
 		//조회
-		List<ProductFileDTO> ar = boardDTO.ge
+		List<BoardFileDTO> ar = boardDAO.getFileList(boardDTO);
 		//db삭제
 		int result = boardDAO.setDelete(boardDTO);
 		//hdd삭제 
-		String path = servletContext.getRealPath("/resources/upload/product/");
+		String path = servletContext.getRealPath("/resources/upload/notice/");
 		
-		for(ProductFileDTO f:ar) {
+		for(BoardFileDTO f:ar) {
 			fileManager.fileDelete(path, f.getFileName());			
 		}		
 		
