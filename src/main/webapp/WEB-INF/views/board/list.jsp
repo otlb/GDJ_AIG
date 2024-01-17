@@ -95,7 +95,7 @@
 								</div>
 								<div class="col-auto">
 									<label for="search" class="visually-hidden">Search</label> <input
-										type="text" name="search" class="form-control" id="search"
+										type="text" name="search" class="form-control" id="search" value="${pager.search}"
 										placeholder="search">
 								</div>
 								<div class="col-auto">
