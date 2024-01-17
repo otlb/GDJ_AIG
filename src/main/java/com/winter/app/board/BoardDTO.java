@@ -7,6 +7,7 @@ public class BoardDTO {
 	private Long boardNum;
 	private String boardName;
 	private String boardUser;
+	
 	public Long getBoardNum() {
 		return boardNum;
 	}

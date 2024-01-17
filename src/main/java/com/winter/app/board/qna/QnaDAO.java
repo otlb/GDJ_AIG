@@ -21,8 +21,8 @@ public class QnaDAO implements BoardDAO {
 	
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
+		
 	}
 
 	@Override
@@ -57,7 +57,7 @@ public class QnaDAO implements BoardDAO {
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
 		
-		return 0;
+		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
 	}
 
 	@Override

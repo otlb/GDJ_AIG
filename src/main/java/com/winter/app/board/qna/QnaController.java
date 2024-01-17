@@ -37,7 +37,7 @@ public class QnaController {
 	public String getList(Pager pager,Model model)throws Exception{
 		List<BoardDTO> ar = qnaService.getList(pager);
 		model.addAttribute("list", ar);
-		
+		model.addAttribute("pager", pager);		
 		
 		return "board/list";
 	}
@@ -74,6 +74,20 @@ public class QnaController {
 	public String setDelete(QnaDTO boardDTO)throws Exception{
 		boardDTO.setFlag(1);
 		int result = qnaService.setDelete(boardDTO);
+		
+		return "redirect:./list";
+	}
+	
+	@GetMapping("update")
+	public String setUpdate(BoardDTO boardDTO,Model model)throws Exception{
+		boardDTO = qnaService.getDetail(boardDTO);
+		model.addAttribute("boardDTO", boardDTO);
+		return "board/update";
+	}
+	
+	@PostMapping("update")
+	public String setUpdate(BoardDTO boardDTO,MultipartFile[] attachs)throws Exception{
+		int resutl = qnaService.setUpdate(boardDTO,attachs);
 		
 		return "redirect:./list";
 	}

@@ -15,7 +15,6 @@
 	</properties>
 	<dependencies>
 	
-	
 	<dependency>
     	 <groupId>javax.inject</groupId>
    	 	 <artifactId>javax.inject</artifactId>
@@ -136,7 +135,7 @@
 			<version>1</version>
 		</dependency>
 				
-		<!-- Servlet -->
+		<!-- Servlet test 할때 -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>

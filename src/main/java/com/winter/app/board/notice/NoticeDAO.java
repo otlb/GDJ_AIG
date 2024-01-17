@@ -18,8 +18,8 @@ public class NoticeDAO implements BoardDAO {
 	private final String NAMESPACE ="com.winter.app.board.notice.NoticeDAO.";
 	@Override
 	public Long getTotalCount(Pager pager) throws Exception {
+		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 		
-		return null;
 	}
 
 	@Override
@@ -48,8 +48,8 @@ public class NoticeDAO implements BoardDAO {
 
 	@Override
 	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return sqlSession.update(NAMESPACE+"setUpdate", boardDTO);
 	}
 
 	@Override

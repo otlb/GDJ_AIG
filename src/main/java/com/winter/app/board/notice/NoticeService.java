@@ -33,10 +33,11 @@ public class NoticeService implements BoardService {
 	
 	@Override
 	public List<BoardDTO> getList(Pager pager) throws Exception {
-		pager.makeRow();		
-		
-				
-		return boardDAO.getList(pager);
+		pager.makeRow();
+		Long totalCount = boardDAO.getTotalCount(pager);
+		pager.makeNum(totalCount);
+		List<BoardDTO> ar = boardDAO.getList(pager);				
+		return ar;
 	}
 
 	@Override
@@ -73,9 +74,9 @@ public class NoticeService implements BoardService {
 	}
 
 	@Override
-	public int setUpdate(BoardDTO boardDTO) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
+	public int setUpdate(BoardDTO boardDTO, MultipartFile[] attachs) throws Exception {
+		//hdd에 파일 저장해야함  나중에 할것
+		return boardDAO.setUpdate(boardDTO);
 	}
 
 	@Override
