@@ -64,10 +64,19 @@ public class NoticeController {
 		return "redirect:./list";
 	}
 	@PostMapping("delete")
-	public String setDelete(NoticeDTO noticeDTO)throws Exception{
+	public String setDelete(NoticeDTO noticeDTO,Model model)throws Exception{
 		int result = boardService.setDelete(noticeDTO);
 		
-		return "redirect:./list";
+		String msg = "삭제 실패";
+		if(result>0) {
+			msg = "삭제 성공";
+		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("path", "./list");
+				
+		
+		return "commons/result";		
+		
 	}
 	
 

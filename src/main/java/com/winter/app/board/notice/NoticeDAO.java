@@ -59,7 +59,7 @@ public class NoticeDAO implements BoardDAO {
 	}
 	
 	public List<BoardFileDTO> getFileList(BoardDTO boardDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getListFiles", boardDTO);
+		return sqlSession.selectList(NAMESPACE+"getFileList", boardDTO);
 	}
 	
 
