@@ -76,18 +76,19 @@
                     </tbody>                        
                 </table>
                  <div>                    
-		         	<form class="row g-3" action="./list">
+		         	<form id="searchForm" class="row g-3" action="./list">
+		         		<input id="page" type="hidden" name="page" value="1">
 						<div class="col-auto">
-							<select name=kind class="form-select" aria-label="Default select example">
-							  <option value="kind1">제목</option>
-							  <option value="kind2">내용</option>
-							  <option value="kind3">작성자</option>
-							  <option value="kind4">제목+내용+작성자</option>
+							<select name=kind id="kind" data-kind="${pager.kind} class="form-select" aria-label="Default select example">
+							  <option class="a" value="kind1">제목</option>
+							  <option class="a" value="kind2">내용</option>
+							  <option class="a" value="kind3">작성자</option>
+							  <option class="a" value="kind4">제목+내용+작성자</option>
 							</select>
 						</div>		
 					  	<div class="col-auto">
 						    <label for="search" class="visually-hidden">Search</label>
-						    <input type="text" name="search" class="form-control" id="search" placeholder="search">
+						    <input type="text"  name="search" class="form-control" id="search" placeholder="search" value="${pager.search}">
 					  	</div>
 				  		<div class="col-auto">
 				    		<button type="submit" class="btn btn-primary mb-3">Search</button>
@@ -98,20 +99,20 @@
 			  <ul class="pagination">
 			  	<c:if test="${!pager.start}">
 			    <li class="page-item">
-			      <a class="page-link" href="./list?page=${pager.startNum-1}&search=${pager.search}&kind=${pager.kind}" aria-label="Previous">
-			        <span aria-hidden="true">&laquo;</span>
+			      <a class="page-link"  href="./list?page=${pager.startNum-1}&search=${pager.search}&kind=${pager.kind}" aria-label="Previous">
+			        <span class="pager" aria-hidden="true" data-page="${pager.startNum-1}">&laquo;</span>
 			      </a>
 			    </li>
 			    </c:if>
 			    
 			    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="i">
-			    		<li class="page-item"><a class="page-link" href="./list?page=${i}&search=${pager.search}&kind=${pager.kind}">${i}</a></li>
+			    		<li class="page-item"><a class="page-link pager" data-page="${i}" href="./list?page=${i}&search=${pager.search}&kind=${pager.kind}">${i}</a></li>
 			    </c:forEach>
 			    
 			    <c:if test="${!pager.last}">
 			    <li class="page-item">
-			      <a class="page-link" href="./list?page=${pager.lastNum+1}&search=${pager.search}&kind=${pager.kind}" aria-label="Next">
-			        <span aria-hidden="true">&raquo;</span>
+			      <a class="page-link"  href="./list?page=${pager.lastNum+1}&search=${pager.search}&kind=${pager.kind}" aria-label="Next">
+			        <span class="pager" aria-hidden="true" data-page="${pager.lastNum+1}">&raquo;</span>
 			      </a>			      
 			    </li>
 			    </c:if>
@@ -132,5 +133,6 @@
 		<!-- footer -->
         <!-- 사용전 경로를 꼭 수정하세요-->
 		<c:import url="../temps/footer.jsp"></c:import>
+		
     </body>
 </html>
