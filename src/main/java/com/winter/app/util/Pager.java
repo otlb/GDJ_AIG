@@ -26,6 +26,10 @@ public class Pager {
 	}
 	
 	public void makeNum(Long totalCount)throws Exception{
+		//검색결과가 없을때 페이지 번호 1로하기  
+		if(totalCount<1) {
+			totalCount=1L;
+		}
 		//총페이지 
 		totalPage = totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage() !=0) {
