@@ -12,11 +12,12 @@
 					type="text" class="form-control" id="title" name="boardName"
 					value="${boardDTO.boardName}">
 			</div>
-			<div class="mb-3">
+			
+<%-- 		<div class="mb-3">
 				<label for="user" class="form-label">Writer</label> <input
-					type="text" value="${boardDTO.boardUser}"
+					type="text" value="${member.userName}"
 					class="form-control" id="user" name="boardUser">
-			</div>
+			</div> --%>
 
 
 			<div class="mb-3">

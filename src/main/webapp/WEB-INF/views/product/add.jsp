@@ -30,14 +30,7 @@
                             <p class="lead fw-normal text-muted mb-0">Let's work together!</p>
                         </div>
                         <div class="row gx-5 justify-content-center">
-                            <div class="col-lg-8 col-xl-6">
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- * * SB Forms Contact Form * *-->
-                                <!-- * * * * * * * * * * * * * * *-->
-                                <!-- This form is pre-integrated with SB Forms.-->
-                                <!-- To make this form functional, sign up at-->
-                                <!-- https://startbootstrap.com/solution/contact-forms-->
-                                <!-- to get an API token!-->
+                            <div class="col-lg-8 col-xl-6">                                
                                 <form id="contactForm" action="./add" method="post" enctype="multipart/form-data" >
                                     <!-- Name-->
                                     <div class="form-floating mb-3">
