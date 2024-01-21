@@ -62,7 +62,7 @@ public class ProductService {
 		return result;		
 		
 	}
-	public int update(ProductDTO productDTO) throws Exception{
+	public int update(ProductDTO productDTO,MultipartFile[] attachs) throws Exception{
 		return productDAO.update(productDTO);
 	}
 	

@@ -5,10 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.winter.app.board.BoardDTO;
 import com.winter.app.util.Pager;
 
 @Controller
@@ -58,21 +60,20 @@ public class ProductController {
 				
 	}
 	
+	@GetMapping("update")
+	public String update(ProductDTO productDTO,Model model)throws Exception{
+		productDTO = productService.getdetail(productDTO);
+		model.addAttribute("dto", productDTO);
+		return "product/update";
+	}
+	
 	
 	@RequestMapping(value = "update",method = RequestMethod.POST)
-	public String update(ProductDTO productDTO,Model model) throws Exception{
+	public String update(ProductDTO productDTO,MultipartFile[] attachs) throws Exception{
 		
-		int result = productService.update(productDTO);
+		int resutl = productService.update(productDTO,attachs);
 		
-		String msg = "수정 실패";
-		if(result>0) {
-			msg = "수정 성공";
-		}
-		model.addAttribute("msg",msg);
-		model.addAttribute("path", "./list");
-		
-		return "commons/result";		
-			
+		return "redirect:./list";			
 		
 	}
 	

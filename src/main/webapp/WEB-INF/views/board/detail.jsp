@@ -59,11 +59,7 @@
                         <form id="frm" action="./update" method="get">
                             <input type="hidden" name="boardNum" value="${boardDTO.boardNum}">
                         </form>
-                    <div>
-                    
                    
-                    
-                    </div>
 
 
                 </section>
