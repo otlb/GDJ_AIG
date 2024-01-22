@@ -18,6 +18,10 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	@GetMapping("agreement")
+	public void setAgreement()throws Exception{
+		
+	}
 	
 	@GetMapping("join")
 	public String setJoin()throws Exception{
@@ -91,5 +95,7 @@ public class MemberController {
 		
 		return "redirect:./mypage";
 	}
+	
+	
 	
 }
