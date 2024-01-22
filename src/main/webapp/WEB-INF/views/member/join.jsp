@@ -33,36 +33,35 @@
 						enctype="multipart/form-data">
 						<div class="mb-3">
 							<label for="username" class="form-label">아이디</label> <input
-								type="text" class="form-control" id="username" name="userName"
-								value="${memberDTO.userName}">
+								type="text" class="form-control" id="username" name="userName">
 						</div>
 						<div class="mb-3">
 							<label for="password" class="form-label">비밀번호</label> <input
 								type="password" class="form-control" id="password"
-								name="password" value="${memberDTO.password}">
+								name="password">
 						</div>
 						<div class="mb-3">
 							<label for="phone" class="form-label">핸드폰번호</label> <input
-								type="text" class="form-control" id="phone" name="phone"
-								value="${memberDTO.phone}">
+								type="text" class="form-control" id="phone" name="phone">
 						</div>
 						<div class="mb-3">
 							<label for="email" class="form-label">이메일</label> <input
-								type="text" class="form-control" id="email" name="email"
-								value="${memberDTO.email}">
+								type="text" class="form-control" id="email" name="email">
 						</div>
 						<div class="mb-3">
-							<label for="address" class="form-label">주소</label> 
+							<label for="address" class="form-label">주소</label>
 							<!--  <input type="text" class="form-control" id="address" name="address"
 								value="${memberDTO.address}"> -->
-								
-								<input type="text" id="sample6_postcode" placeholder="우편번호">
-								<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br> 
-								<input type="text" id="sample6_address" placeholder="주소" name="address" value="${memberDTO.address}"><br>
-								<input type="text" id="sample6_detailAddress" placeholder="상세주소">
-								<input type="text" id="sample6_extraAddress" placeholder="참고항목">
 
-							<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+							<input type="text" id="sample6_postcode" placeholder="우편번호">
+							<input type="button" onclick="sample6_execDaumPostcode()"
+								value="우편번호 찾기"><br> <input type="text"
+								id="sample6_address" placeholder="주소" name="address"><br>
+							<input type="text" id="sample6_detailAddress" placeholder="상세주소">
+							<input type="text" id="sample6_extraAddress" placeholder="참고항목">
+
+							<script
+								src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 							<script>
 								function sample6_execDaumPostcode() {
 									new daum.Postcode(
@@ -100,20 +99,29 @@
 														}
 														// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
 														if (extraAddr !== '') {
-															extraAddr = ' ('+ extraAddr	+ ')';
+															extraAddr = ' ('
+																	+ extraAddr
+																	+ ')';
 														}
 														// 조합된 참고항목을 해당 필드에 넣는다.
-														document.getElementById("sample6_extraAddress").value = extraAddr;
+														document
+																.getElementById("sample6_extraAddress").value = extraAddr;
 
 													} else {
-														document.getElementById("sample6_extraAddress").value = '';
+														document
+																.getElementById("sample6_extraAddress").value = '';
 													}
 
 													// 우편번호와 주소 정보를 해당 필드에 넣는다.
-													document.getElementById('sample6_postcode').value = data.zonecode;
-													document.getElementById("sample6_address").value = addr;
+													document
+															.getElementById('sample6_postcode').value = data.zonecode;
+													document
+															.getElementById("sample6_address").value = addr;
 													// 커서를 상세주소 필드로 이동한다.
-													document.getElementById("sample6_detailAddress").focus();
+													document
+															.getElementById(
+																	"sample6_detailAddress")
+															.focus();
 												}
 											}).open();
 								}
@@ -121,8 +129,7 @@
 						</div>
 						<div class="mb-3">
 							<label for="name" class="form-label">이름</label> <input
-								type="text" class="form-control" id="name" name="name"
-								value="${memberDTO.name}">
+								type="text" class="form-control" id="name" name="name">
 						</div>
 
 						<div class="mb-3">

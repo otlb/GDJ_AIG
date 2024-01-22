@@ -47,7 +47,7 @@ public class MemberService {
 		
 		if(m != null) {
 			if(m.getPassword().equals(memberDTO.getPassword())) {
-				return m;
+				return memberDTO;
 			}else {
 				m=null;
 			}			
@@ -58,6 +58,11 @@ public class MemberService {
 	
 	public int setUpdate(MemberDTO memberDTO,MultipartFile photo)throws Exception{
 		return memberDAO.setUpdate(memberDTO);
+	}
+	
+	public MemberDTO getDetail(MemberDTO memberDTO)throws Exception{
+		
+		return memberDAO.getDetail(memberDTO);
 	}
 	
 	

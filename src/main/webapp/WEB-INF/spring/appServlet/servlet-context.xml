@@ -21,6 +21,21 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 객체생성 -->
+ 	<!-- <beans:bean class="com.winter.app.interceptors.TestInterceptor" id="testInterceptor"></beans:bean>  -->
+ 	<interceptors>
+		<!-- <interceptor>
+			<mapping path="/**"/> 이경로를 지나면 
+			<exclude-mapping path="/notice/*"/> 이 경로는 제외
+			<beans:ref bean="testInterceptor"/> 만들어진 객체 참조
+		</interceptor> -->		
+		<interceptor>
+			<mapping path="/qna/*"/>
+			<exclude-mapping path="/qna/list"/>
+			<beans:bean class="com.winter.app.interceptors.AuthenticationInterCeptor" id="authentication"></beans:bean>
+		</interceptor>
+	</interceptors>
+	
 	<context:component-scan base-package="com.winter.app" />
 	
 	

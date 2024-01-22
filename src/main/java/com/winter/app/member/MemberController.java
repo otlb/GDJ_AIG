@@ -66,23 +66,27 @@ public class MemberController {
 	}
 	
 	@GetMapping("mypage")
-	public String getMyPage(HttpSession session)throws Exception{
-		
-		
+	public String getMyPage(HttpSession session,Model model)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getDetail(memberDTO);	
+		model.addAttribute("member", memberDTO); //같은 속성명 사용해도 모델(리퀘스트)가 더 먼저 검색하게때문에 상관x
 		return "member/mypage";
 	}
 	
 	@GetMapping("update")
-	public void setUpdate()throws Exception{
-		
+	public void setUpdate(HttpSession session,Model model)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		memberDTO = memberService.getDetail(memberDTO);
+		model.addAttribute("member",memberDTO);
 	}
+	
 	@PostMapping("update")
 	public String setUpdate(MemberDTO memberDTO,MultipartFile photo,HttpSession session)throws Exception{
 		//db에 업데이트 후 mypage로 이동
 		MemberDTO dto = (MemberDTO)session.getAttribute("member");
-		memberDTO.setUserName(dto.getUserName());
-		memberDTO.setAvatarDTO(dto.getAvatarDTO());
-		session.setAttribute("member", memberDTO);
+		
+		memberDTO.setUserName(dto.getUserName());		
+		
 		int result = memberService.setUpdate(memberDTO, photo);
 		
 		return "redirect:./mypage";
