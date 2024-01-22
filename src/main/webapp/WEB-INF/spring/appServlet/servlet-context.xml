@@ -27,13 +27,25 @@
 		<!-- <interceptor>
 			<mapping path="/**"/> 이경로를 지나면 
 			<exclude-mapping path="/notice/*"/> 이 경로는 제외
-			<beans:ref bean="testInterceptor"/> 만들어진 객체 참조
+			<beans:ref bean="testInterceptor"/> 만들어진 객체 참조, 매서드에@Component 추가하고 사용 
 		</interceptor> -->		
 		<interceptor>
 			<mapping path="/qna/*"/>
+			<mapping path="/member/mypage"/>
+			<mapping path="/member/update"/>
+			<mapping path="/member/delete"/>
 			<exclude-mapping path="/qna/list"/>
 			<beans:bean class="com.winter.app.interceptors.AuthenticationInterCeptor" id="authentication"></beans:bean>
 		</interceptor>
+		
+		<interceptor>
+			<mapping path="/qna/update"/>
+			<mapping path="/qna/delete"/>
+			<mapping path="/notice/update"/>
+			<mapping path="/notice/delete"/>
+			<beans:ref bean="writerCheckInterceptor"/>
+		</interceptor>
+		
 	</interceptors>
 	
 	<context:component-scan base-package="com.winter.app" />
