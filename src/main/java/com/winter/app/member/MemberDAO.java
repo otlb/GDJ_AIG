@@ -24,5 +24,9 @@ public class MemberDAO {
 		
 		return sqlSession.selectOne(NAMESPACE+"getDetail", memberDTO);
 	}
+	
+	public int setUpdate(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setUpdate", memberDTO);
+	}
 
 }

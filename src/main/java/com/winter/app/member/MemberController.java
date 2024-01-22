@@ -72,4 +72,20 @@ public class MemberController {
 		return "member/mypage";
 	}
 	
+	@GetMapping("update")
+	public void setUpdate()throws Exception{
+		
+	}
+	@PostMapping("update")
+	public String setUpdate(MemberDTO memberDTO,MultipartFile photo,HttpSession session)throws Exception{
+		//db에 업데이트 후 mypage로 이동
+		MemberDTO dto = (MemberDTO)session.getAttribute("member");
+		memberDTO.setUserName(dto.getUserName());
+		memberDTO.setAvatarDTO(dto.getAvatarDTO());
+		session.setAttribute("member", memberDTO);
+		int result = memberService.setUpdate(memberDTO, photo);
+		
+		return "redirect:./mypage";
+	}
+	
 }

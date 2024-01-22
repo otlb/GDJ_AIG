@@ -56,5 +56,9 @@ public class MemberService {
 		return m;		
 	}
 	
+	public int setUpdate(MemberDTO memberDTO,MultipartFile photo)throws Exception{
+		return memberDAO.setUpdate(memberDTO);
+	}
+	
 	
 }

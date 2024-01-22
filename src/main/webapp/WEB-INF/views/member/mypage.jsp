@@ -48,7 +48,10 @@
 											<td>${member.address}</td>										
 										</tr>
 									</table>	
-																	
+									
+									<div>
+										<a href="./update" class="btn-primary">수정</a>									
+									</div>
 									
 									<img alt="" src="../resources/upload/member/${member.avatarDTO.fileName}">
 									
