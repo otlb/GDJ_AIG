@@ -1,26 +1,41 @@
 console.log("agreement");
 
-document.querySelector('#checkAll');
+const checkAll = document.getElementById("checkAll");
+const checks = document.getElementsByClassName("checks");
 
-checkAll.addEventListener('click', function(){
-
-    const isChecked = checkAll.checked;
-
-    if(isChecked){
-        const checkboxes = document.querySelectorAll('.checks');
-
-        for(const checkbox of checkboxes){
-            checkbox.checked = true;
+checkAll.addEventListener("click",function(){
+    let c = checkAll.checked;
+    if(c){
+        for(let check of checks){
+            check.checked = true;
         }
+    }else{
+        for(let check of checks)
+        check.checked = false;
     }
+});
 
-    else{
-        const checkboxes = document.querySelectorAll('.checks');
-        for(const checkbox of checkboxes){
-            checkbox.checked = false;
-        }
-    }
-})
+// document.querySelector('#checkAll');
+
+// checkAll.addEventListener('click', function(){
+
+//     const isChecked = checkAll.checked;
+
+//     if(isChecked){
+//         const checkboxes = document.querySelectorAll('.checks');
+
+//         for(const checkbox of checkboxes){
+//             checkbox.checked = true;
+//         }
+//     }
+
+//     else{
+//         const checkboxes = document.querySelectorAll('.checks');
+//         for(const checkbox of checkboxes){
+//             checkbox.checked = false;
+//         }
+//     }
+// })
 
 
 const checkboxes = document.querySelectorAll('.checks');
@@ -41,3 +56,4 @@ for(const checkbox of checkboxes){
   });
   
 }
+
