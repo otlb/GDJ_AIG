@@ -1,7 +1,11 @@
 package com.winter.app.account;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.winter.app.util.Pager;
 
 @Service
 public class AccountService {
@@ -19,6 +23,13 @@ public class AccountService {
 		 return result;
 	}
 	
+	public List<AccountDTO> getList(Pager pager)throws Exception{
+		pager.makeRow();
+		Long totalCount = accountDAO.getTotalCount(pager);
+		pager.makeNum(totalCount);
+		List<AccountDTO> ar = accountDAO.getList(pager);
+		return ar;
+	}
 	
 
 }

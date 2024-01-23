@@ -33,11 +33,11 @@
 						<table class="table table-hover">
 							<thead>
 								<tr class="table-dark">
+									<th>PRODUCTNAME</th>
 									<th>ACCOUNTNUM</th>
-									<th>USERNAME</th>
-									<th>PRODUCTNUM</th>
+									<th>ACCOUNTBALNACE</th>
 									<th>ACCOUNTDATE</th>
-									<th>ACCOUNTBALNACE</th>									
+									<th>PRODUCTRATE</th>									
 								</tr>
 							</thead>
 							<tbody>
@@ -46,33 +46,14 @@
 										<td colspan="4">검색결과가 없습니다.</td>
 									</tr>
 								</c:if>
-								<c:forEach items="${list}" var="dto">
-									<c:set var="f" value="0"></c:set>
-									<c:catch>
-										<c:set var="f" value="${dto.flag}"></c:set>
-										<c:if test="${f eq 1}">
-											<tr>
-												<td></td>
-												<td>삭제된 게시판입니다</td>
-												<td></td>
-												<td></td>
-												<td></td>
-											</tr>
-										</c:if>
-									</c:catch>
-									<c:if test="${f eq 0}">
+								<c:forEach items="${list}" var="dto">								
 										<tr>
-											<td>${dto.boardNum}</td>
-											<td><a href="./detail?boardNum=${dto.boardNum}"> <c:catch>
-														<c:forEach begin="1" end="${dto.boardDepth}">--</c:forEach>
-													</c:catch> ${dto.boardName}
-											</a></td>
-											<td>${dto.boardContents}</td>
-											<td>${dto.boardUser}</td>
-											<td>${dto.boardDate}</td>
-											<td>${dto.boardHits}</td>
+											<td>${dto.productName}</td>
+											<td>${dto.accountNum}</td>
+											<td>${dto.accountBlanace}</td>
+											<td>${dto.accountDate}</td>
+											<td>${dto.productRate}</td>											
 										</tr>
-									</c:if>
 								</c:forEach>
 							</tbody>
 						</table>
@@ -81,10 +62,10 @@
 								<div class="col-auto">
 									<select name=kind class="form-select"
 										aria-label="Default select example">
-										<option value="kind1">제목</option>
-										<option value="kind2">내용</option>
-										<option value="kind3">작성자</option>
-										<option value="kind4">제목+내용+작성자</option>
+										<option value="kind1">상품명</option>
+										<option value="kind2">계좌번호</option>
+										<option value="kind3">가입일</option>
+										<option value="kind4">상품명+계좌번호+가입일</option>
 									</select>
 								</div>
 								<div class="col-auto">
@@ -120,11 +101,6 @@
 									</c:if>
 								</ul>
 							</nav>
-							<c:if test="${not empty member}">
-							<div>
-								<a href="./add" class="btn btn-light">글쓰기</a>
-							</div>
-							</c:if>
 						</div>
 					</div>
 				</div>

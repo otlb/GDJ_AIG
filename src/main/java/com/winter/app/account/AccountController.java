@@ -1,5 +1,7 @@
 package com.winter.app.account;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +13,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.winter.app.member.MemberDTO;
 import com.winter.app.product.ProductDTO;
+import com.winter.app.util.Pager;
 
 @Controller
 @RequestMapping("/account/*")
 public class AccountController {
 	@Autowired
 	private AccountService accountService;
+	
+	@GetMapping("list")
+	public String getList(Pager pager,Model model,HttpSession session)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		pager.setUserName(memberDTO.getUserName());
+		List<AccountDTO> ar = accountService.getList(pager);
+		model.addAttribute("list", ar);
+		model.addAttribute("pager", pager);
+		return "account/list";
+	}
+		
 	
 	@GetMapping("join")
 	public String setJoin(ProductDTO productDTO,Model model)throws Exception{

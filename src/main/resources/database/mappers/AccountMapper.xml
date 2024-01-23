@@ -4,10 +4,43 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.winter.app.account.AccountDAO">
 
+	<sql id="search">
+		<where>
+			<if test="kind=='kind1' or kind =='kind4'">
+			PRODUCTNAME LIKE '%'||#{search}||'%'
+			</if>
+			<if test="kind=='kind2' or kind=='kind4'">
+			OR ACCOUNTNUM  LIKE '%'||#{search}||'%'
+			</if>
+			<if test="kind=='kind3' or kind=='kind4'">
+			OR ACCOUNTDATE  LIKE '%'||#{search}||'%'
+			</if>
+			OR A.USERNAME = #{userName}		
+		</where>	
+	</sql>
+	
+
+	<select id="getList" resultType="AccountDTO" parameterType="Pager">
+		SELECT * FROM
+		(SELECT ROWNUM R,N.* FROM
+		(SELECT * FROM PRODUCT P
+				  LEFT JOIN
+				  ACCOUNT A
+				  USING(PRODUCTNUM)
+		<include refid="search"></include>
+		ORDER BY A.ACCOUNTBALNACE DESC)N)
+		WHERE R BETWEEN #{startRow} AND #{lastRow}
+	</select>
+	
+	<select id="getTotalCount" resultType="Long">
+		SELECT COUNT(ACCOUNTNUM) FROM ACCOUNT 			
+	</select>
+	
+
 	<insert id="setJoin" parameterType="AccountDTO">
-		INSERT INTO ACCOUNT (ACCOUNTNUM,USERNAME,PRODUCTNUM,ACCOUNTPW)
+		INSERT INTO ACCOUNT
+		(ACCOUNTNUM,USERNAME,PRODUCTNUM,ACCOUNTPW)
 		VALUES(#{accountNum},#{userName},#{productNum},#{accountPw})
 	</insert>
-
 
 </mapper>

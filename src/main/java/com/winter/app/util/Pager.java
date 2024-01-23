@@ -18,6 +18,16 @@ public class Pager {
 	private String search;
 	private String kind;
 	
+	private String userName;
+	
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
 	//페이지게시물 1~10 ,11~20 계산식  
 	public void makeRow()throws Exception{
 		this.startRow = (this.getPage()-1)*this.getPerPage()+1;
