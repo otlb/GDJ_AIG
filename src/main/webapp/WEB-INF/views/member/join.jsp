@@ -39,6 +39,12 @@
 							<label for="password" class="form-label">비밀번호</label> <input
 								type="password" class="form-control" id="password"
 								name="password">
+								<div id="passwordResult"></div>
+						</div>
+						<div class="mb-3">
+							<label for="passwordCheck" class="form-label">비밀번호 확인</label> <input
+								type="password" class="form-control" id="passwordCheck">
+								<div id="passwordCheckResult"></div>
 						</div>
 						<div class="mb-3">
 							<label for="phone" class="form-label">핸드폰번호</label> <input
@@ -138,7 +144,7 @@
 
 						<div class="d-grid">
 							<button class="btn btn-primary btn-lg" id="submitButton"
-								type="submit">Submit</button>
+								type="button">Submit</button>
 						</div>
 					</form>
 				</div>
@@ -153,7 +159,7 @@
 	<!-- footer -->
 	<!-- 사용전 경로를 꼭 수정하세요-->
 	<c:import url="../temps/footer.jsp"></c:import>
-	<script
-		src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script src="../resources/js/member/joinCheck.js"></script>
 </body>
 </html>
