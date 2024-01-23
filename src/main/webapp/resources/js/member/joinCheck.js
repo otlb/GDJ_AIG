@@ -83,7 +83,16 @@ $('#submitButton').click(function(){
     }else{
         alert('address ok');
     }
-
+    if($('#email').val().length==0){
+        alert('email no');
+    }else{
+        alert('email ok');
+    }
+    if($('#phone').val().length==0){
+        alert('phone no');
+    }else{
+        alert('phone ok');
+    }
 })
 
 $('#password').blur(function(){

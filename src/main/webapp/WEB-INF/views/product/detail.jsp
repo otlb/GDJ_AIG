@@ -61,13 +61,15 @@
 				<h3>없는 번호 입니다.</h3>
 			</c:if>
 
-			<a id="update" href="#" class="btn btn-info">Update</a> 
-			<a id="delete" href="#" class="btn btn-danger">Delete</a>
+			<a id="update" href="#" class="btn btn-info">Update</a> <a
+				id="delete" href="#" class="btn btn-danger">Delete</a>
 			<form id="frm" action="./update" method="get">
 				<input type="hidden" name="productNum" value="${dto.productNum}">
 			</form>
 
-
+			<div>
+				<a href="../account/join?productNum=${dto.productNum}" class="btn btn-light">상품구매</a>
+			</div>
 
 
 
