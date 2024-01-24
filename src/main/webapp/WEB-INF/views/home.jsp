@@ -30,7 +30,12 @@
                                 	
                                     <a id="b1" class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="resume.html">Resume</a>
                                     <a id="b2" class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="projects.html">Projects</a>
-                                    
+                                    <!-- <button id="btn">noticelist</button>
+                                    <div id="result">
+                                        <input type="text" id="title">
+                                        <textarea id="contents"></textarea>
+                                        <button id="btn2">공지사항 추가</button>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -181,5 +186,6 @@
         </main>
 		<!-- footer -->
 		<c:import url="./temps/footer.jsp"></c:import>
+        <script src="../resources/js/basic.js"></script>
     </body>
 </html>

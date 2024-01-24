@@ -95,6 +95,17 @@ public class MemberController {
 		
 		return "redirect:./mypage";
 	}
+	@GetMapping("idCheck")
+	public String getIdCheck(MemberDTO memberDTO,Model model)throws Exception{
+		memberDTO = memberService.getDetail(memberDTO);
+		int result =0;
+		if(memberDTO == null) {
+			result =1;
+		}
+		model.addAttribute("result",result);
+		
+		return "commons/ajaxResult";
+	}
 	
 	
 	

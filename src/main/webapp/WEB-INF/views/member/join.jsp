@@ -32,8 +32,8 @@
 					<form class="form-control" method="POST" action="./join"
 						enctype="multipart/form-data">
 						<div class="mb-3">
-							<label for="username" class="form-label">아이디</label> <input
-								type="text" class="form-control" id="username" name="userName">
+							<label for="userName" class="form-label">아이디</label> <input
+								type="text" class="form-control" id="userName" name="userName">
 						</div>
 						<div class="mb-3">
 							<label for="password" class="form-label">비밀번호</label> <input

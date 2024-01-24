@@ -9,8 +9,7 @@
 			<input type="hidden" name="boardNum" value="${boardDTO.boardNum}">
 			<div class="mb-3">
 				<label for="title" class="form-label">Title</label> <input
-					type="text" class="form-control" id="title" name="boardName"
-					value="${boardDTO.boardName}">
+					type="text" class="form-control" id="title" name="boardName">
 			</div>
 			
 <!-- 		<div class="mb-3">
