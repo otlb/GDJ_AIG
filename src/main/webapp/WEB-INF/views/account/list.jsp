@@ -48,11 +48,11 @@
 								</c:if>
 								<c:forEach items="${list}" var="dto">								
 										<tr>
-											<td>${dto.productName}</td>
+											<td>${dto.productDTO.productName}</td>
 											<td>${dto.accountNum}</td>
 											<td>${dto.accountBlanace}</td>
 											<td>${dto.accountDate}</td>
-											<td>${dto.productRate}</td>											
+											<td>${dto.productDTO.productRate}</td>											
 										</tr>
 								</c:forEach>
 							</tbody>

@@ -144,7 +144,7 @@
 
 						<div class="d-grid">
 							<button class="btn btn-primary btn-lg" id="submitButton"
-								type="button">Submit</button>
+								type="submit">Submit</button>
 						</div>
 					</form>
 				</div>

@@ -20,7 +20,7 @@
 	</sql>
 	
 
-	<select id="getList" resultType="AccountDTO" parameterType="Pager">
+	<select id="getList" resultMap="getListResult" parameterType="Pager">
 		SELECT * FROM
 		(SELECT ROWNUM R,N.* FROM
 		(SELECT * FROM PRODUCT P
@@ -31,6 +31,25 @@
 		ORDER BY A.ACCOUNTBALNACE DESC)N)
 		WHERE R BETWEEN #{startRow} AND #{lastRow}
 	</select>
+	
+	<resultMap type="AccountDTO" id="getListResult">
+		<id column="ACCOUNTNUM" property="accountNum"></id>
+		<result column="USERNAME" property="userName"/>
+		<result column="ACCOUNTPW" property="accountPw"/>
+		<result column="ACCOUNTDATE" property="accountDate"/>
+		<result column="ACCOUNTBLANACE" property="accountBlanace"/>
+		<association property="productDTO" javaType="ProductDTO">
+			<id column="PRODUCTNUM" property="productNum" ></id>
+			<result column="PRODUCTNAME" property="productName"/>
+			<result column="PRODUCTCONTENTS" property="productContents"/>
+			<result column="PRODUCTRATE" property="productRate"/>
+			<result column="PRODUCTJUMSU" property="productJumsu"/>
+			<result column="PRODUCTCOUNT" property="productCount"/>
+			<result column="PRODUCTSALE" property="productSale"/>
+		</association>
+	</resultMap>
+		
+	
 	
 	<select id="getTotalCount" resultType="Long">
 		SELECT COUNT(ACCOUNTNUM) FROM ACCOUNT 			

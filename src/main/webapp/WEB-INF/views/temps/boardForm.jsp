@@ -13,11 +13,11 @@
 					value="${boardDTO.boardName}">
 			</div>
 			
-<%-- 		<div class="mb-3">
+<!-- 		<div class="mb-3">
 				<label for="user" class="form-label">Writer</label> <input
 					type="text" value="${member.userName}"
 					class="form-control" id="user" name="boardUser">
-			</div> --%>
+			</div> -->
 
 
 			<div class="mb-3">
@@ -25,10 +25,9 @@
 				<textarea class="form-control" id="contents" rows="3"
 					name="boardContents">${boardDTO.boardContents}</textarea>
 			</div>
-			<div class="mb-3">
-				<input type="file" name="attachs" class="form-control"> <input
-					type="file" name="attachs" class="form-control"> <input
-					type="file" name="attachs" class="form-control">
+			<div class="mb-3" id="filelist" data-file-count="0" data-file-max="5">
+				<button class="del" type="button">del</button>
+				<button type="button" id="fileAdd">파일추가</button>	
 			</div>
 
 			<div class="d-grid">

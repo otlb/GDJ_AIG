@@ -35,11 +35,11 @@
 					<form class="form-control" method="POST" action="./login">												
 						<div class="mb-3">
 							<label for="username" class="form-label">아이디</label> <input
-								type="text" class="form-control" id="username" name="userName">
+								type="text" value="aaa" class="form-control" id="username" name="userName">
 						</div>
 						<div class="mb-3">
 							<label for="password" class="form-label">비밀번호</label> <input
-								type="password" class="form-control" id="password" name="password">
+								type="password" value="123123123" class="form-control" id="password" name="password">
 						</div>
 						<div class="d-grid">
 							<button class="btn btn-primary btn-lg" id="submitButton"

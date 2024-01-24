@@ -4,15 +4,22 @@ import java.sql.Date;
 
 import com.winter.app.product.ProductDTO;
 
-public class AccountDTO extends ProductDTO {
+public class AccountDTO  {
 
 	private Long accountNum;
 	private String userName;
-	//private Long productNum;
+	private Long productNum;
 	private Long accountPw;
 	private Date accountDate;
 	private Long accountBlanace;
+	private ProductDTO productDTO;
 	
+	public ProductDTO getProductDTO() {
+		return productDTO;
+	}
+	public void setProductDTO(ProductDTO productDTO) {
+		this.productDTO = productDTO;
+	}
 	public Long getAccountNum() {
 		return accountNum;
 	}
@@ -25,12 +32,12 @@ public class AccountDTO extends ProductDTO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-//	public Long getProductNum() {
-//		return productNum;
-//	}
-//	public void setProductNum(Long productNum) {
-//		this.productNum = productNum;
-//	}
+	public Long getProductNum() {
+		return productNum;
+	}
+	public void setProductNum(Long productNum) {
+		this.productNum = productNum;
+	}
 	public Long getAccountPw() {
 		return accountPw;
 	}

@@ -66,11 +66,12 @@
 			<form id="frm" action="./update" method="get">
 				<input type="hidden" name="productNum" value="${dto.productNum}">
 			</form>
-
+			
+			<c:if test="${not empty member}">
 			<div>
 				<a href="../account/join?productNum=${dto.productNum}" class="btn btn-light">상품구매</a>
 			</div>
-
+			</c:if>
 
 
 		</section>
