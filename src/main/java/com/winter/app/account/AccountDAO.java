@@ -29,4 +29,8 @@ public class AccountDAO {
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", pager);
 	}
 	
+	public int setWish(AccountDTO accountDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setWish", accountDTO);
+	}
+	
 }

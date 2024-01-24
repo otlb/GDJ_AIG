@@ -61,5 +61,10 @@
 		(ACCOUNTNUM,USERNAME,PRODUCTNUM,ACCOUNTPW)
 		VALUES(#{accountNum},#{userName},#{productNum},#{accountPw})
 	</insert>
+	
+	<insert id="setWish" parameterType="AccountDTO">
+		INSERT INTO WISHLIST 
+		VALUES(#{productNum},#{userName};
+	</insert>
 
 </mapper>

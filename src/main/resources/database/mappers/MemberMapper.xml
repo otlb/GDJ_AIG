@@ -58,5 +58,7 @@
 		</set>		
 		WHERE USERNAME = #{userName}
 	</update>
+	
+
 
 </mapper>

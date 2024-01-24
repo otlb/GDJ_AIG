@@ -71,18 +71,18 @@
 			<div>
 				<a href="../account/join?productNum=${dto.productNum}" class="btn btn-light">상품구매</a>
 			</div>
+			
+			
+			
 			</c:if>
 
 
 		</section>
 
-
-
-
 	</main>
 	<!-- footer -->
 	<!-- 사용전 경로를 꼭 수정하세요-->
 	<c:import url="../temps/footer.jsp"></c:import>
-	<script src="/resources/js/boardDetail.js"></script>
+	<script src="/resources/js/boardDetail.js"></script>	
 </body>
 </html>

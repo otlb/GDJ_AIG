@@ -13,3 +13,4 @@ del.addEventListener("click",function(e){
     frm.setAttribute("method","post");
     frm.submit();
 })
+

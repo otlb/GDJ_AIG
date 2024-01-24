@@ -21,6 +21,17 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 	
+	@GetMapping("wish")
+	public String setWish(AccountDTO accountDTO,Model model,HttpSession session)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		accountDTO.setUserName(memberDTO.getUserName());
+		
+		int resluct = accountService.setWish(accountDTO);
+		model.addAttribute("accountDTO", accountDTO);		
+		
+		return "commons/wishlist";
+	}
+	
 	@GetMapping("list")
 	public String getList(Pager pager,Model model,HttpSession session)throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
@@ -29,8 +40,7 @@ public class AccountController {
 		model.addAttribute("list", ar);
 		model.addAttribute("pager", pager);
 		return "account/list";
-	}
-		
+	}		
 	
 	@GetMapping("join")
 	public String setJoin(ProductDTO productDTO,Model model)throws Exception{
@@ -40,8 +50,7 @@ public class AccountController {
 	}
 	@PostMapping("join")
 	public String setJoin(HttpSession session,AccountDTO accountDTO,Model model)throws Exception{
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");	
-		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");		
 				  accountDTO.setUserName(memberDTO.getUserName());
 		
 		
@@ -56,5 +65,8 @@ public class AccountController {
 		model.addAttribute("path","./list");
 		return "commons/result";		
 	}
+	
+	
+	
 
 }

@@ -31,5 +31,10 @@ public class AccountService {
 		return ar;
 	}
 	
+	public int setWish(AccountDTO accountDTO)throws Exception{
+		 int result = accountDAO.setWish(accountDTO);
+		 return result; 
+	}
+	
 
 }
