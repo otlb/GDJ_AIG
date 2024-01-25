@@ -1,5 +1,6 @@
 package com.winter.app.account;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -21,16 +22,35 @@ public class AccountController {
 	@Autowired
 	private AccountService accountService;
 	
+	@PostMapping("wishDelete")
+	public String setWishDelete(Model model,Long [] productNum,HttpSession session)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		int result = accountService.setWishDelet(productNum, memberDTO);
+		model.addAttribute("result",result);
+		
+		return "commons/ajaxResult";
+	}
+	
 	@GetMapping("wish")
 	public String setWish(AccountDTO accountDTO,Model model,HttpSession session)throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		accountDTO.setUserName(memberDTO.getUserName());
 		
 		int resluct = accountService.setWish(accountDTO);
-		model.addAttribute("accountDTO", accountDTO);		
+		model.addAttribute("result",resluct);		
 		
-		return "commons/wishlist";
+		return "commons/ajaxResult";
 	}
+	
+	@GetMapping("wishList")
+	public String getwishList(Model model,HttpSession session)throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		
+		List<ProductDTO> ar = accountService.getWishList(memberDTO);
+		model.addAttribute("list", ar);
+		
+		return "account/wishList";
+	}	
 	
 	@GetMapping("list")
 	public String getList(Pager pager,Model model,HttpSession session)throws Exception{

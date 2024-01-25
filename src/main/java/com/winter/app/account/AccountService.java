@@ -1,10 +1,14 @@
 package com.winter.app.account;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.winter.app.member.MemberDTO;
+import com.winter.app.product.ProductDTO;
 import com.winter.app.util.Pager;
 
 @Service
@@ -36,5 +40,25 @@ public class AccountService {
 		 return result; 
 	}
 	
-
+	public List<ProductDTO> getWishList(MemberDTO memberDTO)throws Exception{		
+		return accountDAO.getWishList(memberDTO);
+	}
+	
+	public int setWishDelet(Long[] productNum,MemberDTO memberDTO) throws Exception{
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("nums", productNum);
+		map.put("member",memberDTO);
+		return accountDAO.setWishDelet(map);
+		
+//		for(int i=0; i<productNum.length;i++) {
+//			accountDTO = new AccountDTO();
+//			accountDTO.setProductNum(productNum[i]);
+//			accountDTO.setUserName(memberDTO.getUserName());
+//   		accountDAO.setWishDelet(accountDTO);
+//		}
+//	
+//		 
+	}
+	
 }

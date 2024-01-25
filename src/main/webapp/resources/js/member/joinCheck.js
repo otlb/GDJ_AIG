@@ -123,16 +123,35 @@ $('#passwordCheck').keyup(function(){
 });
 
 $('#userName').blur(function(){        
-    fetch("./idCheck?userName="+$('#userName').val(),{
-        method:"GET"        
-    })
-    .then(res=>res.text())
-    .then((res)=>{
-        if(res==0){
-            alert("중복된 아이디입니다")
-        }else{
-            alert("사용 가능한 아이디입니다")
-        }
-    }) 
+    // fetch("./idCheck?userName="+$('#userName').val(),{
+    //     method:"GET"        
+    // })
+    // .then(res=>res.text())
+    // .then((res)=>{
+    //     if(res==0){
+    //         alert("중복된 아이디입니다")
+    //     }else{
+    //         alert("사용 가능한 아이디입니다")
+    //     }
+    // }) 
     
+    // $.get("idCheck?userName="+$('#userName').val(),function(resuponse){
+    //     console.log(resuponse);
+    // })
+    
+    let userName = $('#userName').val();
+    $.ajax({
+        url:"./idCheck",
+        method:"GET",
+        data:{
+            userName: userName   //앞 userName 파라미터이름, 뒤 userName 변수
+        },
+        success:function(res){
+            console.log(res)        
+        },
+        error:function(){
+            alert("아이디 확인 실패")
+        }
+    })
+
 });

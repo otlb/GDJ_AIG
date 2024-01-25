@@ -17,7 +17,8 @@
   		<typeAlias type="com.winter.app.board.qna.QnaDTO" alias="QnaDTO"/>
   		<typeAlias type="com.winter.app.member.MemberDTO" alias="MemberDTO"/>
   		<typeAlias type="com.winter.app.member.AvatarDTO" alias="AvatarDTO"/> 
-  		<typeAlias type="com.winter.app.account.AccountDTO" alias="AccountDTO"/> 		
+  		<typeAlias type="com.winter.app.account.AccountDTO" alias="AccountDTO"/>
+  		<typeAlias type="java.util.Map" alias="Map"/> 		
   	</typeAliases>
   
   

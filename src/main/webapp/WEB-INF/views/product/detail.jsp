@@ -43,7 +43,7 @@
 						</tr>
 					</thead>
 					<tr>
-						<td>${dto.productNum}</td>
+						<td id="productNum">${dto.productNum}</td>
 						<td>${dto.productName}</td>
 						<td>${dto.productContents}</td>
 						<td>${dto.productRate}</td>
@@ -60,7 +60,7 @@
 			<c:if test="${empty dto}">
 				<h3>없는 번호 입니다.</h3>
 			</c:if>
-
+			
 			<a id="update" href="#" class="btn btn-info">Update</a> <a
 				id="delete" href="#" class="btn btn-danger">Delete</a>
 			<form id="frm" action="./update" method="get">
@@ -70,10 +70,10 @@
 			<c:if test="${not empty member}">
 			<div>
 				<a href="../account/join?productNum=${dto.productNum}" class="btn btn-light">상품구매</a>
-			</div>
-			
-			
-			
+				
+				<button id="wish" class="btn btn-primary" type="button" name="productNum">상품찜</button>						
+				
+			</div>			
 			</c:if>
 
 
