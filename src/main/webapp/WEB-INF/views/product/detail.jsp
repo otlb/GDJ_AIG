@@ -56,24 +56,75 @@
 					</tr>
 				</table>
 			</c:if>
-
-			<c:if test="${empty dto}">
-				<h3>없는 번호 입니다.</h3>
-			</c:if>
 			
+
+			<div class="my-3" id="replyList">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>REPLYNUM</th>
+							<th>PRODUCTNUM</th>
+							<th>USERNAME</th>
+							<th>REPLYCONTENTS</th>
+							<th>REPLYDATE</th>
+							<th>REPLYJUMSU</th>
+						</tr>
+					</thead>
+					<c:forEach items="${list}" var="re">
+						<tr>
+							<td>${re.replyNum}</td>
+							<td>${re.productNum}</a></td>
+							<td>${re.userName}</td>
+							<td>${re.replyContents}</td>
+							<td>${re.replyDate}</td>
+							<td>${re.replyJumsu}</td>							
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
+
+
+			<div class="my-3">
+				<form id="replyForm">
+					<input type="hidden" name="productNum" value="${dto.productNum}" />
+					<div class="mb-3">
+						<textarea class="form-control" name="replyContents"
+							id="replyContents" rows="3"></textarea>
+					</div>
+					<div class="mb-3">
+						<select class="form-select" name="replyJumsu"
+							aria-label="Default select example">
+							<option value="5">★★★★★</option>
+							<option value="4">★★★★</option>
+							<option value="3">★★★</option>
+							<option value="2">★★</option>
+							<option value="1">★</option>
+						</select>
+					</div>
+					<div>
+						<button id="replyAdd" type="button" class="btn btn-primary">댓글달기</button>
+					</div>
+				</form>
+			</div>
+
+
+
+
 			<a id="update" href="#" class="btn btn-info">Update</a> <a
 				id="delete" href="#" class="btn btn-danger">Delete</a>
 			<form id="frm" action="./update" method="get">
 				<input type="hidden" name="productNum" value="${dto.productNum}">
 			</form>
-			
+
 			<c:if test="${not empty member}">
-			<div>
-				<a href="../account/join?productNum=${dto.productNum}" class="btn btn-light">상품구매</a>
-				
-				<button id="wish" class="btn btn-primary" type="button" name="productNum">상품찜</button>						
-				
-			</div>			
+				<div>
+					<a href="../account/join?productNum=${dto.productNum}"
+						class="btn btn-light">상품구매</a>
+
+					<button id="wish" class="btn btn-primary" type="button"
+						name="productNum">상품찜</button>
+
+				</div>
 			</c:if>
 
 
@@ -83,6 +134,7 @@
 	<!-- footer -->
 	<!-- 사용전 경로를 꼭 수정하세요-->
 	<c:import url="../temps/footer.jsp"></c:import>
-	<script src="/resources/js/boardDetail.js"></script>	
+	<script src="/resources/js/boardDetail.js"></script>
+	<script src="/resources/js/wish/wishreply.js"></script>
 </body>
 </html>

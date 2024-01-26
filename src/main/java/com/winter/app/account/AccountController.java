@@ -26,9 +26,16 @@ public class AccountController {
 	public String setWishDelete(Model model,Long [] productNum,HttpSession session)throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		int result = accountService.setWishDelet(productNum, memberDTO);
-		model.addAttribute("result",result);
 		
-		return "commons/ajaxResult";
+		//다시 조회
+		List<ProductDTO> ar = accountService.getWishList(memberDTO);
+		
+		
+		//model.addAttribute("result",result);
+		model.addAttribute("list",ar);
+		
+		//return "commons/ajaxResult";
+		return "account/ajaxList";
 	}
 	
 	@GetMapping("wish")

@@ -22,28 +22,32 @@
 
 
 		<section class="py-5">
-			<div class="container px-5">
-				<!-- Contact form-->
-				<div class="bg-light rounded-4 py-5 px-4 px-md-5">
-					<div class="text-center mb-5">
-						<div
-							class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3">
-							<i class="bi bi-envelope"></i>
-						</div>
-						<h1 class="fw-bolder">Get in Join</h1>
-						<p class="lead fw-normal text-muted mb-0">Let's work together!</p>
-					</div>
-					<div class="row gx-5 justify-content-center">
-						<div class="col-lg-8 col-xl-6">
-						
-							<form id="contactForm" action="./join" method="post"
-								enctype="multipart/form-data">
-								<input type="hidden" name="productNum" value="${dto.productNum}">
-								<div class="mb-3">
-									<label for="accountPw" class="form-label">비밀번호</label>
-									<input type="password" class="form-control" id="accountPw" name="accountPw">
+			<div class="text-center mb-5">
+				<h1 class="display-5 fw-bolder mb-0">
+					<span class="text-gradient d-inline"> 상품가입 </span>
+				</h1>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-4 align-self-center bg-light rounded-4">
+					<div class="card my-3">
+						<h3 class="card-header">상품정보</h3>
+						<form action="./add" method="post">
+							<div class="row card-body">
+								<div class="card-body">
+									<p class="card-text">상품이름 : ${dto.productName}</p>
 								</div>
-								
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">상품번호 : ${dto.productNum}<input
+										type="hidden" name="productNum" value="${dto.productNum}" /></li>
+									<li class="list-group-item">상품내용 : ${dto.productContents}</li>
+									<li class="list-group-item">이자율 : ${dto.productRate}</li>
+									<li class="list-group-item">평점 : ${dto.productJumsu}</li>
+									<li class="list-group-item"><label for="pw">비밀번호 :
+									</label><input class="form-control" id="pw" type="password"
+										name="accountPw" /></li>
+
+								</ul>
+
 
 
 
@@ -57,8 +61,8 @@
 									<button class="btn btn-primary btn-lg" id="submitButton"
 										type="submit">Submit</button>
 								</div>
-							</form>
-						</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

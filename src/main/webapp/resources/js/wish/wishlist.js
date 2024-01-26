@@ -30,27 +30,75 @@ $('#checkAll').click(()=>{
             }
         });
 
+    deleteWithJquery(nums);
+    //deleteWithFetch(nums);    
+
+  });
+
+  function deleteWithFetch(nums){
+    // let param ="";
+    // nums.forEach(element => {
+    //     param=param+"productNum="+element+"&";
+    // });
+
+    let deleteForm = document.getElementById("deleteForm");
+
+    let form = new FormData(deleteForm);
+
+    fetch("./wishDelete",{
+        method:"POST",
+        headers:{
+            "Content-type":"application/x-www-form-urlencoded"
+        },
+        body:param
+       // body:form
+    })
+    .then(response=> response.text())
+    .then(response=> {
+        console.log(response);
+        $("#ajaxList").html(response);
+    })
+
+  }
+
+  function deleteWithJquery(nums){
+
+    let form = new FormData($("#deleteForm")[0]);
     $.ajax({
         method:"post",
         url:"./wishDelete",
         traditional:true,
-        data:{
-            productNum:nums,
-        },
+        contentType:false,
+        processData:false,
+        data:form,
+        //data:{
+           // productNum:nums,           
+        //},
         success:function(result){
            
             if(result.trim()>0){                
                 location.reload();  
-
+                
+                // Element들 삭제
                 // checkElement.forEach((element) => {
                 //     $(element).parent().parent().parent().remove();
-                // });                                 
+                // });
+                
+                //db에서 다시 조회
+                $("#ajaxList").html(result.trim);
+                
             }
         },
         error:function(){
             alert("알수없는 에러 발생");
         }
     })
-        
+  }
 
-  });
+
+$("#add").click(function(){
+    $("#deleteForm").attr("action","../account/join")
+    $("#deleteForm").submit();
+
+
+});

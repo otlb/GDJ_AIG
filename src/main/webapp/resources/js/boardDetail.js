@@ -1,7 +1,9 @@
 const update = document.getElementById("update");
 const del = document.getElementById("delete");
 const frm = document.getElementById("frm");
-const productNum = document.getElementById("productNum");
+
+
+
 
 update.addEventListener("click",function(e){
     e.preventDefault();
@@ -54,3 +56,6 @@ $('#wish').click(function(){
     })
     
 });
+
+
+

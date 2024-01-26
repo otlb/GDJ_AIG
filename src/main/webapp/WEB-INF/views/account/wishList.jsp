@@ -31,6 +31,7 @@
 					<div class="col-lg-11 col-xl-9 col-xxl-8">
 						<div class="col-auto d-flex justify-content-end">
 							<button class="btn btn-danger mb-3" id="del">찜삭제</button>
+							<button class="btn btn-danger mb-3" id="add">가입</button>
 						</div>
 						<!-- table-->
 						<table class="table table-hover">
@@ -48,7 +49,9 @@
 									<th>PRODUCTRATE</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="ajaxList">
+
+								<form id="deleteForm">
 								<c:if test="${list.size()==0}">
 									<tr>
 										<td colspan="4">검색결과가 없습니다.</td>
@@ -59,7 +62,7 @@
 										<td>
 											<div class="form-check">
 												<input class="form-check-input checks" type="checkbox"
-													value="${dto.productNum}">
+													value="${dto.productNum}" name="productNum">
 											</div>
 										</td>
 										<td>${dto.productNum}</td>
@@ -68,6 +71,8 @@
 										<td>${dto.productRate}</td>
 									</tr>
 								</c:forEach>
+								</form>
+
 							</tbody>
 						</table>
 					</div>
