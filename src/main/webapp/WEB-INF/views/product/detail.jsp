@@ -68,6 +68,8 @@
 							<th>REPLYCONTENTS</th>
 							<th>REPLYDATE</th>
 							<th>REPLYJUMSU</th>
+							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<c:forEach items="${list}" var="re">
@@ -78,6 +80,8 @@
 							<td>${re.replyContents}</td>
 							<td>${re.replyDate}</td>
 							<td>${re.replyJumsu}</td>							
+							<td><c:if test="${re.userName eq member.userName}"><button>삭제</button></c:if></td>
+							<td><c:if test="${re.userName eq member.userName}"><button>수정</button></c:if></td>							
 						</tr>
 					</c:forEach>
 				</table>
