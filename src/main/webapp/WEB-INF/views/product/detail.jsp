@@ -58,33 +58,24 @@
 			</c:if>
 			
 
-			<div class="my-3" id="replyList">
+			<div class="my-3" >
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>REPLYNUM</th>
-							<th>PRODUCTNUM</th>
-							<th>USERNAME</th>
-							<th>REPLYCONTENTS</th>
-							<th>REPLYDATE</th>
-							<th>REPLYJUMSU</th>
+							<th>REPLYCONTENTS</th>			
+							<th>USERNAME</th>							
+							<th>REPLYDATE</th>							
 							<th></th>
 							<th></th>
 						</tr>
 					</thead>
-					<c:forEach items="${list}" var="re">
-						<tr>
-							<td>${re.replyNum}</td>
-							<td>${re.productNum}</a></td>
-							<td>${re.userName}</td>
-							<td>${re.replyContents}</td>
-							<td>${re.replyDate}</td>
-							<td>${re.replyJumsu}</td>							
-							<td><c:if test="${re.userName eq member.userName}"><button>삭제</button></c:if></td>
-							<td><c:if test="${re.userName eq member.userName}"><button>수정</button></c:if></td>							
-						</tr>
-					</c:forEach>
+					<tbody id="replyList" data-userName="${userName}">
+
+					</tbody>
 				</table>
+				<div>					
+					<button id="more" data-replyList-page="1" data-replyList-totalPage="1">더보기</button>					
+				</div>
 			</div>
 
 
