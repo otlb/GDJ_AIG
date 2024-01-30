@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.winter.app.member.MemberDTO;
 import com.winter.app.util.Pager;
 
-@Controller
+@RestController// 모든 매서드가 json으로 넘겨줄때 사용
 @RequestMapping("/reply/*")
 public class ReplyController {
 	
@@ -54,6 +55,26 @@ public class ReplyController {
 		Map<String,Object> map = new HashMap<String, Object>();
 		map.put("datas", ar);
 		map.put("pager",pager);
+		
+		return map;
+	}
+	
+	@PostMapping("update")
+	@ResponseBody
+	public int setUpdate(ReplyDTO replyDTO)throws Exception{
+		int result = replyService.setUpdate(replyDTO);
+		
+		return result;
+	}
+	
+	@PostMapping("delete")
+	@ResponseBody
+	public Map<String, Object> setDelete(Pager pager, ReplyDTO replyDTO)throws Exception{
+		replyService.setDelete(replyDTO);
+	 	List<ReplyDTO> ar = replyService.getList(replyDTO, pager);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("datas", ar);
+		map.put("pager", pager);
 		
 		return map;
 	}

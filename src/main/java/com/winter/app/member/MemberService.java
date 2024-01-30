@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.winter.app.board.BoardFileDTO;
+import com.winter.app.errors.MemberLoginException;
 import com.winter.app.util.FileManager;
 
 @Service
@@ -47,13 +48,19 @@ public class MemberService {
 		
 		if(m != null) {
 			if(m.getPassword().equals(memberDTO.getPassword())) {
+				memberDTO.setRoleDTOs(m.getRoleDTOs());
 				return memberDTO;
 			}else {
+				//pw틀림
 				m=null;
+				throw new MemberLoginException("pw를 확인");
 			}			
+		}else {
+			//id틀림
+			throw new MemberLoginException("id를 확인");
+			
 		}
-		
-		return m;		
+		//return m;		
 	}
 	
 	public int setUpdate(MemberDTO memberDTO,MultipartFile photo)throws Exception{

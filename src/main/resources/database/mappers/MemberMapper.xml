@@ -4,6 +4,11 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.winter.app.member.MemberDAO">
 
+	<insert id="setMemberRole" parameterType="MemberDTO">
+		INSERT INTO MEMBER VALUES
+		(#{userName}, (SELECT ROLENUM FROM ROLE WHERE ROLENAME = 'ROLE_MAMBER'))
+	</insert>
+
 	<insert id="setJoin" parameterType="MemberDTO">
 		INSERT INTO MEMBER
 		(USERNAME, PASSWORD, PHONE, EMAIL, ADDRESS, NAME)
@@ -23,6 +28,10 @@
 		SELECT * FROM MEMBER M
 		LEFT OUTER JOIN
 		AVATAR USING(USERNAME)
+		INNER JOIN
+		MEMBERROLE MR USING(USERNAME)
+		INNER JOIN
+		ROLE R USING(ROLENUM)
 		WHERE USERNAME = #{userName}
 	</select>
 
@@ -38,6 +47,10 @@
 			<result column="FILENAME" property="fileName" />
 			<result column="ORINAME" property="oriName" />
 		</association>
+		<collection property="roleDTOs" javaType="List" ofType="RoleDTO">
+			<id column="ROLENUM" property="roleNum"></id>
+			<result column="ROLENAME" property="roleName"/>
+		</collection>
 	</resultMap>
 
 	<update id="setUpdate" parameterType="MemberDTO">

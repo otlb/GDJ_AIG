@@ -34,6 +34,9 @@
 			<mapping path="/member/mypage"/>
 			<mapping path="/member/update"/>
 			<mapping path="/member/delete"/>
+			<mapping path="/notice/add"/>
+			<mapping path="/notice/update"/>
+			<mapping path="/notice/delete"/>
 			<exclude-mapping path="/qna/list"/>
 			<beans:bean class="com.winter.app.interceptors.AuthenticationInterCeptor" id="authentication"></beans:bean>
 		</interceptor>
@@ -44,6 +47,13 @@
 			<mapping path="/notice/update"/>
 			<mapping path="/notice/delete"/>
 			<beans:ref bean="writerCheckInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/notice/add"/>
+			<mapping path="/notice/delete"/>
+			<mapping path="/notice/update"/>	
+			<beans:ref bean="adminCheckinterceptors"/>	
 		</interceptor>
 		
 	</interceptors>

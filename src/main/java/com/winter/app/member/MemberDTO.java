@@ -1,5 +1,9 @@
 package com.winter.app.member;
 
+import java.util.List;
+
+import com.winter.app.member.role.RoleDTO;
+
 public class MemberDTO {
 	
 	private String userName;
@@ -8,8 +12,20 @@ public class MemberDTO {
 	private String email;
 	private String address;
 	private String name;
+	
 	private AvatarDTO avatarDTO;
 	
+	private List<RoleDTO> roleDTOs;
+	
+	
+	
+	
+	public List<RoleDTO> getRoleDTOs() {
+		return roleDTOs;
+	}
+	public void setRoleDTOs(List<RoleDTO> roleDTOs) {
+		this.roleDTOs = roleDTOs;
+	}
 	public AvatarDTO getAvatarDTO() {
 		return avatarDTO;
 	}

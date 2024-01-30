@@ -26,4 +26,13 @@ public class ReplyDAO {
 	public Long getTotalCount(ReplyDTO replyDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getTotalCount", replyDTO);
 	}
+	
+	public int setUpdate(ReplyDTO replyDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setUpdate", replyDTO);
+	}
+	
+	public int setDelete(ReplyDTO replyDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", replyDTO);
+	}
+	
 }

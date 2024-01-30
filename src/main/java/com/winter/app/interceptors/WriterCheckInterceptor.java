@@ -20,6 +20,7 @@ import com.winter.app.member.MemberDTO;
 @Component
 public class WriterCheckInterceptor extends HandlerInterceptorAdapter {
 	
+	
 	@Autowired
 	private NoticeDAO noticeDAO;
 	@Autowired
